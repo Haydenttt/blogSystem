@@ -4,6 +4,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <welcome-file-list>
-        <welcome-file>pagination</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+        <servlet-name>Action</servlet-name>
+        <servlet-class>com.unicom.util.Action</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Action</servlet-name>
+        <url-pattern>/Action</url-pattern>
+    </servlet-mapping>
 </web-app>
