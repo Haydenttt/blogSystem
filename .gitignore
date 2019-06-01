@@ -27,3 +27,9 @@
 *.zip
 *.tar.gz
 *.rar
+
+/out/
+/target/
+
+*.xml
+util/DBUtil.java
