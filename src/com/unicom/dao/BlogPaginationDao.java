@@ -40,8 +40,6 @@ public class BlogPaginationDao {
             pstmt.setInt(2, dataPerPage);
 
             rs = pstmt.executeQuery();
-//            CommonUtil commonUtil = new CommonUtil();
-//            commonUtil.setBlog();
             while (rs.next()) {
                 Integer id = rs.getInt(1);
                 String title = rs.getString(2);
@@ -59,8 +57,10 @@ public class BlogPaginationDao {
                 blog.setCategoryId(categoryId);
                 blog.setViews(views);
                 blog.setNickname(nickname);
-                blog.setUpdateTime(updateTime);}
-            list.add(blog);
+                blog.setUpdateTime(updateTime);
+                list.add(blog);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }finally{

@@ -67,11 +67,11 @@
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li class="page-item">
-                            <a class="page-link" href="Action?currentPage=1">首页</a>
+                            <a class="page-link" href="pagination?currentPage=1">首页</a>
                         </li>
                             <%-- 其他页，点击到上一页--%>
                         <li class="page-item">
-                            <a class="page-link" href="Action?currentPage=${param.currentPage - 1}"
+                            <a class="page-link" href="pagination?currentPage=${param.currentPage - 1}"
                                aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                                 <span class="sr-only"></span>
@@ -127,7 +127,7 @@
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item">
-                                <a class="page-link" href="Action?currentPage=${i}">${i}</a>
+                                <a class="page-link" href="pagination?currentPage=${i}">${i}</a>
                             </li>
                         </ul>
                     </nav>
@@ -170,11 +170,11 @@
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li class="page-item">
-                            <a class="page-link" href="Action?currentPage=${requestScope.totalPage}">末页</a>
+                            <a class="page-link" href="pagination?currentPage=${requestScope.totalPage}">末页</a>
                         </li>
                             <%-- 其他页，点击到下一页--%>
                         <li class="page-item">
-                            <a class="page-link" href="Action?currentPage=${param.currentPage + 1}"
+                            <a class="page-link" href="pagination?currentPage=${param.currentPage + 1}"
                                aria-label="Previous">
                                 <span aria-hidden="true">&raquo;</span>
                                 <span class="sr-only"></span>
