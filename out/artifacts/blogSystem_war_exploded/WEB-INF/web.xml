@@ -11,5 +11,44 @@
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/UserServlet</url-pattern>
+    <servlet>
+        <servlet-name>MineServlet</servlet-name>
+        <servlet-class>com.unicom.blogManagement.MineServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MineServlet</servlet-name>
+        <url-pattern>/MineServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteBlogServlet</servlet-name>
+        <servlet-class>com.unicom.blogManagement.DeleteBlogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteBlogServlet</servlet-name>
+        <url-pattern>/DeleteBlogServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DraftServlet</servlet-name>
+        <servlet-class>com.unicom.blogManagement.DraftServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DraftServlet</servlet-name>
+        <url-pattern>/DraftServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateBlogServlet</servlet-name>
+        <servlet-class>com.unicom.blogManagement.UpdateBlogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateBlogServlet</servlet-name>
+        <url-pattern>/UpdateBlogServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteDraftServlet</servlet-name>
+        <servlet-class>com.unicom.blogManagement.DeleteDraftServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteDraftServlet</servlet-name>
+        <url-pattern>/DeleteDraftServlet</url-pattern>
     </servlet-mapping>
 </web-app>
