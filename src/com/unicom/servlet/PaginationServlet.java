@@ -40,6 +40,7 @@ public class PaginationServlet extends HttpServlet {
       Integer totalPage = blogPaginationDao.getTotalPage();
       request.setAttribute("list", list);
       request.setAttribute("totalPage", totalPage);
+//      这里写整合后的jsp
 //      request.getRequestDispatcher("pagination.jsp").forward(request, response);
   }
 }

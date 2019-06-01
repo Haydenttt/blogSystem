@@ -1,6 +1,8 @@
 package com.unicom.dao;
 
 import com.unicom.entity.Blog;
+import com.unicom.entity.User;
+import com.unicom.util.CommonUtil;
 import com.unicom.util.DBUtil;
 import com.unicom.util.StaticConstant;
 
@@ -25,7 +27,7 @@ public class BlogPaginationDao {
     String sql;
     Integer dataPerPage = StaticConstant.DATA_PER_PAGE;
 
-    public List<Blog> getAllData(int currentPage) {
+    public List<Blog> getAllData(int currentPage){
         List<Blog> list = new ArrayList<>();
         Blog blog = new Blog();
         try {
@@ -38,8 +40,6 @@ public class BlogPaginationDao {
             pstmt.setInt(2, dataPerPage);
 
             rs = pstmt.executeQuery();
-//            CommonUtil commonUtil = new CommonUtil();
-//            commonUtil.setBlog();
             while (rs.next()) {
                 Integer id = rs.getInt(1);
                 String title = rs.getString(2);
@@ -61,7 +61,6 @@ public class BlogPaginationDao {
                 list.add(blog);
             }
 
-            System.out.println(list.size());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
