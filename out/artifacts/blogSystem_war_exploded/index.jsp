@@ -10,7 +10,11 @@
   <head>
     <title>$Title$</title>
   </head>
+
   <body>
-  $END$
+  <form action="${pageContext.request.contextPath}/indexComment" method="get">
+    <h1>测试</h1>
+      <input type="submit" value="加油吧 少年！">
+  </form>
   </body>
 </html>
