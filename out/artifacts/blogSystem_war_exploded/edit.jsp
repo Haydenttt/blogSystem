@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" import="com.unicom.entity.*" %>
 <%
     String basePath = request.getScheme()+"://"+request.getServerName()
             +":"+request.getServerPort()+"/"+request.getContextPath();
+%>
+<%
+    User user=new User();
+
+    String username=request.getParameter("username");
+
 %>
 
 <!DOCTYPE html>
@@ -13,7 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- 重置文件 -->
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="css/_header.scss" type='text/css' />
     <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
     <title>修改</title>
@@ -73,7 +79,7 @@
         <ul class="reg_ul" style="list-style-type:none">
             <li>
                 <span>用户名：</span>
-                <input type="text" readonly value="" name="user" placeholder="请修改用户名" class="reg_user">
+                <input type="text" readonly value="<%=username%>" name="user" placeholder="请修改用户名" class="reg_user">
                 <span class="tip user_hint"></span>
             </li>
             <li>
