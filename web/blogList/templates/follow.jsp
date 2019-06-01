@@ -45,7 +45,7 @@
                             jsp += '</div>';
                             jsp += '</div>';
                             jsp += '<div class="layui-col-md9">';
-                            jsp += '<div class="layui-row grid-demo grid-demo-bg1">';
+                            jsp += '<div class="layui-row grid-demo grid-demo-bg1" onclick = fnToUrl('+data[i].id+',"'+data[i].username+'") >';
                             jsp += '<div class="layui-col-md12">';
                             jsp += '<p style="font-size:30px;color: #444444">'+data[i].title+'</p>';
                             jsp += '</div>';
@@ -63,7 +63,22 @@
                     }
                 }); 
             });
-       
+     function fnToUrl(id,username){
+
+         $.ajax({	    	
+                    url: "<%=request.getContextPath()%>/indexComment?id="+id+"&username="+username,        //后台url
+                    type: "post",                   //类型，POST或者GET
+                    dataType: 'json',              //数据返回类型，可以是xml、json等
+                    success: function (data) {      //成功，回调函数 	 
+             
+                    },
+                    error: function (er) {          //失败，回调函数
+                    
+                    }
+                }); 
+    	 alert(buffer);
+    	//
+     }  
         </script>
     </body>
 </html>
