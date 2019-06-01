@@ -2,6 +2,7 @@ package com.unicom.dao;
 
 import com.unicom.entity.Blog;
 import com.unicom.entity.User;
+import com.unicom.util.CommonUtil;
 import com.unicom.util.DBUtil;
 import com.unicom.util.StaticConstant;
 
@@ -28,6 +29,7 @@ public class BlogPaginationDao {
 
     public List<Blog> getAllData(int currentPage){
         List<Blog> list = new ArrayList<>();
+        Blog blog = new Blog();
         try {
 //            查询blog表中所有已发布且未被删除的博客信息
             sql = "select * from blog525.blog where status = 1 and is_deleted = 0 limit ?,?";
@@ -38,9 +40,9 @@ public class BlogPaginationDao {
             pstmt.setInt(2, dataPerPage);
 
             rs = pstmt.executeQuery();
-
-            while(rs.next()){
-                Blog blog = new Blog();
+//            CommonUtil commonUtil = new CommonUtil();
+//            commonUtil.setBlog();
+            while (rs.next()) {
                 Integer id = rs.getInt(1);
                 String title = rs.getString(2);
                 String coverImgUrl = rs.getString(3);
@@ -57,9 +59,8 @@ public class BlogPaginationDao {
                 blog.setCategoryId(categoryId);
                 blog.setViews(views);
                 blog.setNickname(nickname);
-                blog.setUpdateTime(updateTime);
-                list.add(blog);
-            }
+                blog.setUpdateTime(updateTime);}
+            list.add(blog);
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
