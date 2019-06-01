@@ -27,3 +27,6 @@
 *.zip
 *.tar.gz
 *.rar
+
+/out/
+/target/
