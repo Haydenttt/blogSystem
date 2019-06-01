@@ -1,6 +1,7 @@
 package com.unicom.register.servlet;
 
 import java.io.IOException;
+import java.net.StandardSocketOptions;
 import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
@@ -44,14 +45,15 @@ public class ViewServlet extends HttpServlet {
         ViewImpl view=new ViewImpl();
         List<Blog> list=new ArrayList<Blog>();
         list= view.query5();
+     //   System.out.println(list);
         Gson gson = new Gson();
-       String json = gson.toJson(list);  //将Pricels转化为Json数组
+      String json = gson.toJson(list);  //将Pricels转化为Json数组
 
       //  Gson gson= new GsonBuilder().setPrettyPrinting().create();
-     //   JsonParser jp = new JsonParser();
+     //   JsonParser jp = new JsonParserj();
 
       //  String prettyJsonString = gson.toJson(list);
-       response.getWriter().print(gson);
+       response.getWriter().print(json);
         out.flush();
         out.close();
 

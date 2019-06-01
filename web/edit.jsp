@@ -14,14 +14,63 @@
     <!-- 重置文件 -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/_header.scss" type='text/css' />
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
     <title>修改</title>
 </head>
 <body style="background: #f3f3f3">
+<header class="header_area">
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container box_1620">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <!-- <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav">
+                        <li class="nav-item active"><a class="nav-link" href="index.html">首页</a></li>
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">分类</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="<%=basePath %>/single-blog.html">分类一</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类二</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类三</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类四</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类五</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类六</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/statistics.html">统计</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/myblog.html">我的博客</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/subscribe.html">我的关注</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right header_social ml-auto">
+                        <li class="nav-item"><a href="<%=basePath %>/login.html"></i>登录</a></li>
+                        <li class="nav-item"><a href="<%=basePath %>/regist.html"></i>注册</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
 <div class="reg_div" style="background: #A3B4DC">
     <p>修改用户信息</p>
 
     <form action ="<%=basePath%>/UserEditServlet" method="get">
-        <ul class="reg_ul">
+        <ul class="reg_ul" style="list-style-type:none">
             <li>
                 <span>用户名：</span>
                 <input type="text" readonly value="" name="user" placeholder="请修改用户名" class="reg_user">

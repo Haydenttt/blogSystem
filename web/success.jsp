@@ -557,7 +557,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             data : {},
             dataType : "json", //返回数据形式为json
             success : function(data1) {
-                alert(11);
+                //alert(11);
                 var cc=[]
                 var dd=[1,2,3,4,5,6]
                 $.each(data1, function(index,obj) {
