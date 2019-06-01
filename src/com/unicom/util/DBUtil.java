@@ -18,7 +18,7 @@ public class DBUtil {
     //数据库用户名
     private static final String USER_NAME = "root";
     //用户密码
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "110622";
 
     /**
      * 得到连接

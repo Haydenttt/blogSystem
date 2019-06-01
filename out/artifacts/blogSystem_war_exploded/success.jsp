@@ -26,18 +26,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
     <!-- Custom CSS -->
     <link href="css/style1.css" rel='stylesheet' type='text/css' />
-    <!-- Graph CSS -->
-    <link href="css/font-awesome.css" rel="stylesheet">
+
     <!-- jQuery -->
-    <!-- lined-icons -->
-    <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+
     <link rel="stylesheet" href="css/_header.scss" type='text/css' />
     <!-- //lined-icons -->
     <!-- chart -->
     <script src="js/echarts.min.js"></script>
     <!-- //chart -->
     <!--animate-->
-    <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+
 
 
     <!--//end-animate-->
@@ -100,214 +98,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </header>
 
+<div style="margin-top: 80px;margin-left: 80px;">
+    <div style="height: 260px;  ">
+        <div
+                style="float: left; margin-right: 10px; width: 23%; height: 260px; background: #fff">
 
-<!-- main content start-->
-<div class="main-content">
-
-    <div id="page-wrapper">
-        <div class="graphs">
-            <div class="col_3">
-                <div class="col-md-3 widget widget1">
-                    <div class="r3_counter_box">
-                        <i class="fa fa-mail-forward"></i>
-                        <div class="stats">
-                            <h5><%=view.query(username)%> <span></span></h5>
-                            <div class="grow">
-                                <p>阅读量</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 widget widget1">
-                    <div class="r3_counter_box">
-                        <i class="fa fa-users"></i>
-                        <div class="stats">
-                            <h5><%=view.query2(true,username)%><span></span></h5>
-                            <div class="grow grow1">
-                                <p>点赞量</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 widget widget1">
-                    <div class="r3_counter_box">
-                        <i class="fa fa-eye"></i>
-                        <div class="stats">
-                            <h5><%=view.query1(false)%><span></span></h5>
-                            <div class="grow grow3">
-                                <p>收藏量</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 widget">
-                    <div class="r3_counter_box">
-                        <i class="fa fa-usd"></i>
-                        <div class="stats">
-                            <h5><%=view.query4(username)%> <span></span></h5>
-                            <div class="grow grow2">
-                                <p>文章数</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"> </div>
+            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #8BC34A">阅读量</p></div></div>
+            <div style="height: 130px; ">
+                <h1 align="center" style="line-height: 150px"><%=view.query(username)%></h1>
             </div>
+        </div>
+        <div
+                style="float: left; margin-right: 10px; width: 23%; height: 260px; background: #fff">
 
-            <!-- switches -->
-            <!-- <div class="switches">
-                <div class="col-4">
-                    <div class="col-md-4 switch-right">
-                        <div class="switch-right-grid">
-                            <div class="switch-right-grid1">
-                                <h3>TODAY'S STATS</h3>
-                                <p>Duis aute irure dolor in reprehenderit.</p>
+            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #00BCD4">点赞量</p></div></div>
+            <div style="height: 130px; ">
+                <h1 align="center" style="line-height: 150px"><%=view.query2(true,username)%></h1>
+            </div>
+        </div>
+        <div
+                style="float: left; margin-right: 10px; width: 23%; height: 260px; background: #fff">
 
-                            </div>
-                        </div>
-                        <div class="sparkline">
-                            <canvas id="line" height="150" width="480" style="width: 480px; height: 150px;"></canvas>
-                                <script>
-                                        var lineChartData = {
-                                            labels : ["Mon","Tue","Wed","Thu","Fri","Sat","Mon"],
-                                            datasets : [
-                                                {
-                                                    fillColor : "#fff",
-                                                    strokeColor : "#F44336",
-                                                    pointColor : "#fbfbfb",
-                                                    pointStrokeColor : "#F44336",
-                                                    data : [20,35,45,30,10,65,40]
-                                                }
-                                            ]
+            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div align="center" style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: red">收藏量</p></div></div>
+            <div style="height: 130px; ">
+                <h1 align="center" style="line-height: 150px"><%=view.query1(false)%></h1>
+            </div>
+        </div>
+        <div
+                style="float: left; margin-right: 10px; width: 23%; height: 260px; background: #fff">
 
-                                        };
-                                        new Chart(document.getElementById("line").getContext("2d")).Line(lineChartData);
-                                </script>
-                        </div>
-                    </div>
-                    <div class="col-md-4 switch-right">
-                        <div class="switch-right-grid">
-                            <div class="switch-right-grid1">
-                                <h3>MONTHLY STATS</h3>
-                                <p>Duis aute irure dolor in reprehenderit.</p>
-                                <ul>
-                                    <li>Earning: $5,000 USD</li>
-                                    <li>Items Sold: 400 Items</li>
-                                    <li>Last Hour Sales: $2,434 USD</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="sparkline">
-                            <canvas id="bar" height="150" width="480" style="width: 480px; height: 150px;"></canvas>
-                                <script>
-                                    var barChartData = {
-                                        labels : ["Mon","Tue","Wed","Thu","Fri","Sat","Mon","Tue","Wed","Thu"],
-                                        datasets : [
-                                            {
-                                                fillColor : "#8BC34A",
-                                                strokeColor : "#8BC34A",
-                                                data : [25,40,50,65,55,30,20,10,6,4]
-                                            },
-                                            {
-                                                fillColor : "#8BC34A",
-                                                strokeColor : "#8BC34A",
-                                                data : [30,45,55,70,40,25,15,8,5,2]
-                                            }
-                                        ]
+            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #FFCA28">文章数</p></div></div>
+            <div style="height: 130px; ">
+                <h1 align="center" style="line-height: 150px"><%=view.query4(username)%></h1>
+            </div>
+        </div>
 
-                                    };
-                                        new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
-                                </script>
-                        </div>
-                    </div>
-                    <div class="col-md-4 switch-right">
-                        <div class="switch-right-grid">
-                            <div class="switch-right-grid1">
-                                <h3>ALLTIME STATS</h3>
-                                <p>Duis aute irure dolor in reprehenderit.</p>
-                                <ul>
-                                    <li>Earning: $80,000 USD</li>
-                                    <li>Items Sold: 8,000 Items</li>
-                                    <li>Last Hour Sales: $75,434 USD</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="sparkline">
-                            graph
-                            <link rel="stylesheet" href="css/graph.css">
-                            <script src="js/jquery.flot.min.js"></script>
-                        //graph
-                                <script>
-                                    $(document).ready(function () {
+    </div>
 
-                                        // Graph Data ##############################################
-                                        var graphData = [{
-                                                // Returning Visits
-                                                data: [ [4, 4500], [5,3500], [6, 6550], [7, 7600],[8, 4500], [9,3500], [10, 6550], ],
-                                                color: '#FFCA28',
-                                                points: { radius: 7, fillColor: '#fff' }
-                                            }
-                                        ];
 
-                                        // Lines Graph #############################################
-                                        $.plot($('#graph-lines'), graphData, {
-                                            series: {
-                                                points: {
-                                                    show: true,
-                                                    radius: 1
-                                                },
-                                                lines: {
-                                                    show: true
-                                                },
-                                                shadowSize: 0
-                                            },
-                                            grid: {
-                                                color: '#fff',
-                                                borderColor: 'transparent',
-                                                borderWidth: 10,
-                                                hoverable: true
-                                            },
-                                            xaxis: {
-                                                tickColor: 'transparent',
-                                                tickDecimals: false
-                                            },
-                                            yaxis: {
-                                                tickSize: 1200
-                                            }
-                                        });
 
-                                        // Graph Toggle ############################################
-                                        $('#graph-bars').hide();
-
-                                        $('#lines').on('click', function (e) {
-                                            $('#bars').removeClass('active');
-                                            $('#graph-bars').fadeOut();
-                                            $(this).addClass('active');
-                                            $('#graph-lines').fadeIn();
-                                            e.preventDefault();
-                                        });
-
-                                        $('#bars').on('click', function (e) {
-                                            $('#lines').removeClass('active');
-                                            $('#graph-lines').fadeOut();
-                                            $(this).addClass('active');
-                                            $('#graph-bars').fadeIn().removeClass('hidden');
-                                            e.preventDefault();
-                                        });
-
-                                    });
-                                </script>
-                                <div id="graph-wrapper">
-                                    <div class="graph-container">
-                                        <div id="graph-lines"> </div>
-                                        <div id="graph-bars"> </div>
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div> -->
             <div style="height: 300px; margin-top: 30px">
                 <div
                         style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
@@ -326,22 +155,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div
                         style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
                     <div style="height: 50px; background: #00BCD4">
-                        <p align="center" style="line-height: 50px">文章分类</p>
+                        <p align="center" style="line-height: 50px;">文章分类</p>
                     </div>
                     <div id="ee" style="height: 200px;"></div>
                 </div>
             </div>
 
-
+</div>
             <!--footer section end-->
 
             <!-- main content end-->
             </div>
 
-            <script src="js/jquery.nicescroll.js"></script>
-            <script src="js/scripts.js"></script>
-            <!-- Bootstrap Core JavaScript -->
-            <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
 <script type="text/javascript">
@@ -362,8 +187,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         toolbox: {
             show : true,
             feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
+
                 magicType : {
                     show: true,
                     type: ['pie', 'funnel'],
@@ -557,7 +381,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             data : {},
             dataType : "json", //返回数据形式为json
             success : function(data1) {
-                alert(11);
+                //alert(11);
                 var cc=[]
                 var dd=[1,2,3,4,5,6]
                 $.each(data1, function(index,obj) {
@@ -734,7 +558,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 // alert(134)
                 myChart9.setOption(option9, true);
-                /*  }})  */}})},60*1000);
+                /*  }})  */}})},60*60*1000);
 </script>
 	
      

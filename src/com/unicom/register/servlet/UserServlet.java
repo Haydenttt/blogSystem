@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import com.unicom.register.dao.UserBizImpl;
 import com.unicom.entity.User;
-@WebServlet(name = "UserServlet")
+//@WebServlet(name = "UserServlet")
 public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
@@ -24,8 +24,8 @@ public class UserServlet extends HttpServlet {
         UserBizImpl bizImpl=new UserBizImpl();
         User user=new User();
 
-        System.out.println(username);
-        System.out.println(password);
+        //System.out.println(username);
+      //  System.out.println(password);
         request.setAttribute("username", username);
         HttpSession session = request.getSession();
         session.setAttribute("username", username);
