@@ -1,8 +1,6 @@
 package com.unicom.dao;
 
 import com.unicom.entity.Blog;
-import com.unicom.entity.User;
-import com.unicom.util.CommonUtil;
 import com.unicom.util.DBUtil;
 import com.unicom.util.StaticConstant;
 
@@ -27,7 +25,7 @@ public class BlogPaginationDao {
     String sql;
     Integer dataPerPage = StaticConstant.DATA_PER_PAGE;
 
-    public List<Blog> getAllData(int currentPage){
+    public List<Blog> getAllData(int currentPage) {
         List<Blog> list = new ArrayList<>();
         Blog blog = new Blog();
         try {
@@ -59,11 +57,14 @@ public class BlogPaginationDao {
                 blog.setCategoryId(categoryId);
                 blog.setViews(views);
                 blog.setNickname(nickname);
-                blog.setUpdateTime(updateTime);}
-            list.add(blog);
+                blog.setUpdateTime(updateTime);
+                list.add(blog);
+            }
+
+            System.out.println(list.size());
         } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             try {
                 DBUtil.close(rs);
                 DBUtil.close(pstmt);
@@ -75,8 +76,8 @@ public class BlogPaginationDao {
         return list;
     }
 
-//    计算总页数
-    public int getTotalPage(){
+    //    计算总页数
+    public int getTotalPage() {
         int pageCount = 0;
         try {
             sql = "select count(*) from blog525.blog where status = 1 and is_deleted = 0";
@@ -86,14 +87,14 @@ public class BlogPaginationDao {
 
             rs = pstmt.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 pageCount = rs.getInt(1);
             }
 //            计算总页数
             pageCount = pageCount % dataPerPage == 0 ? pageCount / dataPerPage : pageCount / dataPerPage + 1;
         } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             try {
                 DBUtil.close(rs);
                 DBUtil.close(pstmt);
