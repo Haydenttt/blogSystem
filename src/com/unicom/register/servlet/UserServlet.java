@@ -32,7 +32,7 @@ public class UserServlet extends HttpServlet {
         if (bizImpl.query(username,password)) {
             System.out.println("用户登录成功");
 
-            request.getRequestDispatcher("success.jsp").forward(request, response);
+            request.getRequestDispatcher("edit.jsp").forward(request, response);
         }else {
             response.sendRedirect("error.jsp");
 
