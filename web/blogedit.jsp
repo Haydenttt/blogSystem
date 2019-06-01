@@ -94,11 +94,11 @@
                             <form action="${pageContext.request.contextPath}/PrestorageBlog" method="get">
                                 <!--================表头容器 =================-->
                                 <div style="margin: 10px auto;display: flex;width: 100%">
-                                    <div style="margin-right: 10px;margin-left: 10px;display: flex;justify-content:flex-start;width: 100%">
-                                        <div style="margin-left: 10px;width: 100%">
+                                    <div style="margin-right: 10px;margin-left: 10px;width: 86%">
+                                        <div style="width: 64%;float:left;margin-left: 15px">
                                             <input value="${title}" placeholder="请输入标题" type="text" name="title" style="font-family: 楷体;font-size: 18px;height: 34px;width: 100%">
                                         </div>
-                                        <div style="margin-left: 10px">
+                                        <div style="width: 10%;float:left;margin-left: 15px">
                                             <select id="sel" name="category_name" style="width:auto;height: 34px;color: #0000cc;font-family: 楷体;font-size: 18px">
                                                 <%
                                                     List list= (List) request.getAttribute("list");
@@ -112,7 +112,7 @@
                                                 %>
                                             </select>
                                         </div>
-                                        <div style="margin-left: 10px">
+                                        <div style="width: 15%;float:right;margin-left: 20px">
                                             <input type="hidden" name="id" value="${id}" >
                                             <input type="hidden" name="views" value="${views}">
                                             <input type="hidden" name="username" value="${username}">
@@ -120,7 +120,7 @@
                                             <button type="submit" class="btn btn-primary">保存预览</button>
                                         </div>
                                     </div>
-                                    <div style="margin-right: 20px">
+                                    <div style="width: 12%">
                                         <a href="<%=basePath%>/MineServlet?username=${username}&category=all" class="btn btn-primary">取消编辑</a>
                                     </div>
                                 </div>

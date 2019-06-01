@@ -13,7 +13,7 @@ import java.util.List;
  * @create: 2019-05-27 09:03
  **/
 public class blogManagement {
-    public List<Blog> BookList(ResultSet rs){
+    public List<Blog> BlogList(ResultSet rs){
         List<Blog> list=new ArrayList<Blog>();
         try {
             while(rs.next()){
@@ -35,6 +35,8 @@ public class blogManagement {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return list;
     }
@@ -45,12 +47,12 @@ public class blogManagement {
             String sql="select * from blog where username=? and status=1 and is_deleted=0";
             Object[] params={username};
             rs=DButil.select(sql, params);
-            list=BookList(rs);
+            list=BlogList(rs);
         }else{
             String sql="select * from blog where username=? and category_name=? and status=1 and is_deleted=0";
             Object[] params={username,category};
             rs=DButil.select(sql, params);
-            list=BookList(rs);
+            list=BlogList(rs);
         }
         DButil.close();
         return list;
@@ -59,30 +61,35 @@ public class blogManagement {
     public List<Blog> findDraftByUsername(String username){
         ResultSet rs;
         List<Blog> list;
+        System.out.println(username);
         String sql="select * from blog where username=? and status=0 and is_deleted=0";
         Object[] params={username};
         rs=DButil.select(sql, params);
-        list=BookList(rs);
+        list=BlogList(rs);
+        System.out.println(list.size());
         DButil.close();
         return list;
     }
 
-    public void deleteBlogByID(int id) {
+    public void deleteBlogByID(int id){
         String sql="update blog set is_deleted=1 where id=?";
         Object[] params={id};
         DButil.update(sql, params);
+        DButil.close();
     }
 
-    public void updateBlogByID(int id) {
+    public void updateBlogByID(int id){
         String sql="update blog set status=1 where id=?";
         Object[] params={id};
         DButil.update(sql, params);
+        DButil.close();
     }
 
-    public void deleteDraftByID(int id) {
+    public void deleteDraftByID(int id){
         String sql="update blog set is_deleted=1 where id=?";
         Object[] params={id};
         DButil.update(sql, params);
+        DButil.close();
     }
 
     public int findLikes(int id){
@@ -97,6 +104,7 @@ public class blogManagement {
         }catch (SQLException e) {
             e.printStackTrace();
         }
+        DButil.close();
         return likes;
     }
 }

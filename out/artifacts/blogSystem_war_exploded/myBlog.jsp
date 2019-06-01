@@ -5,34 +5,42 @@
   Time: 19:46
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="com.unicom.blogManagement.blogManagement,com.unicom.entity.Blog" %>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+request.getContextPath();
-%>
 <html>
 <head>
     <title>Title</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<%=basePath %>/css/bootstrap.css">
-    <link rel="stylesheet" href="<%=basePath %>/vendors/linericon/style.css">
-    <link rel="stylesheet" href="<%=basePath %>/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%=basePath %>/vendors/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="<%=basePath %>/vendors/lightbox/simpleLightbox.css">
-    <link rel="stylesheet" href="<%=basePath %>/vendors/nice-select/css/nice-select.css">
-    <link rel="stylesheet" href="<%=basePath %>/vendors/animate-css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="vendors/linericon/style.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
+    <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+    <link rel="stylesheet" href="vendors/animate-css/animate.css">
     <!-- main css -->
-    <link rel="stylesheet" href="<%=basePath %>/css/style.css">
-    <link rel="stylesheet" href="<%=basePath %>/css/responsive.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
+<%
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+request.getContextPath();
+    blogManagement blogMg=new blogManagement();
+%>
 <body>
 <!--================Header Menu Area =================-->
     <header class="header_area">
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container box_1620">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <!-- <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> -->
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav">
@@ -59,133 +67,88 @@
                             <li class="nav-item"><a class="nav-link" href="<%=basePath %>/myblog.html">我的博客</a></li>
                             <li class="nav-item"><a class="nav-link" href="<%=basePath %>/subscribe.html">我的关注</a></li>
                         </ul>
-<%--                        <ul class="nav navbar-nav navbar-right header_social ml-auto">--%>
-<%--                            <li class="nav-item"><a href="<%=basePath %>/login.html"></i>登录</a></li>--%>
-<%--                            <li class="nav-item"><a href="<%=basePath %>/regist.html"></i>注册</a></li>--%>
-<%--                        </ul>--%>
+                        <ul class="nav navbar-nav navbar-right header_social ml-auto">
+                            <li class="nav-item"><a href="<%=basePath %>/login.html"></i>登录</a></li>
+                            <li class="nav-item"><a href="<%=basePath %>/regist.html"></i>注册</a></li>
+                        </ul>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
 <!--================Blog Area =================-->
-        <section class="blog_area p_100 " style="margin-top: 0px;">
+        <section class="blog_area" style="margin-top: 80px;">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-9" style="margin-bottom: 80px;">
                         <div class="blog_left_sidebar">
-                            <div class="secondtitle" style="margin-bottom: 10px">
-<%--                                <h3 style="margin-bottom: 40px;">热爱生活，热爱大自然</h3>--%>
-                                <a href="#" style="text-align: center"><h4>${bvenDemo.getTitle()}</h4></a>
-                                <%--                                                    <fmt:formatDate value="${blog.create_time}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></a>&nbsp;&nbsp;--%>
-                                <i class="fa fa-comments-o" aria-hidden="true">浏览量：</i>&nbsp;188
-                                <i class="fa fa-thumbs-o-up " aria-hidden="true">关注：</i>&nbsp;99
+                            <div class="secondtitle">
+                                <h3 style="margin-bottom: 30px;">${title}</h3>
                             </div>
                             <%--    左侧博客列表    --%>
                             <div class="row">
-
-                                    <div class="col-md-11" style="padding-bottom: 15px;">
+                                <c:forEach items="${blogList}" var="blog">
+                                    <div class="col-md-6" style="padding-bottom: 15px;">
                                         <div class="blog_style1 small">
                                             <div class="blog_img" >
-                                                <img class="img-fluid" src="img/04-01.jpg" style="object-fit:fill; width:750px;height: 470px;">
+                                                <img class="img-fluid" src="${blog.coverImageUrl}" style="width:420px;height: 425px;">
                                             </div>
-<%--&lt;%&ndash;                                            <div class="blog_text">&ndash;%&gt;${bvenDemo.getCoverImageUrl()}--%>
-<%--                                                <div class="blog_text_inner" style="margin-top: -455px;opacity: 0.9;padding-top: 30px;padding-bottom: 30px;">--%>
-<%--                                                    <a href="#"><h4>${bvenDemo.getTitle()}</h4></a>--%>
-<%--&lt;%&ndash;                                                    <fmt:formatDate value="${blog.create_time}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></a>&nbsp;&nbsp;&ndash;%&gt;--%>
-<%--                                                    <i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;88--%>
-<%--                                                    <i class="fa fa-thumbs-o-up " aria-hidden="true"></i>&nbsp;99--%>
-<%--&lt;%&ndash;                                                    <div class="button-group-area mt-10">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                                        <a class="genric-btn success-border circle" href="">&nbsp;Edit&nbsp;</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                                        <a class="genric-btn danger-border circle" onclick="deleteFt(${blog.id})">Delete</a>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                                    </div>&ndash;%&gt;--%>
-<%--                                                </div>--%>
-<%--                                            </div>--%>
+                                            <div class="blog_text">
+                                                <div class="blog_text_inner" style="margin-top: -380px;opacity: 0.9;padding-top: 30px;padding-bottom: 30px;">
+                                                    <a href="<%=basePath%>/indexComment?username=${username}&id=${blog.id}"><h4 style="width:260px;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${blog.title}</h4></a>
+                                                    <fmt:formatDate value="${blog.updateTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></a>&nbsp;&nbsp;
+                                                    <i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;${blog.views}&nbsp;&nbsp;
+                                                    <c:set var="blogid" value="${blog.id}" scope="request" />
+                                                    <%int blogid=Integer.valueOf(request.getAttribute("blogid").toString());%>
+                                                    <i class="fa fa-thumbs-o-up " aria-hidden="true"></i>&nbsp;<%=blogMg.findLikes(blogid)%>
+                                                    <div style="position: relative;margin-bottom: 0px;width:260px;height: 150px;line-height:25px;overflow:hidden;text-overflow: ellipsis;">
+                                                            ${blog.content}
+                                                    </div>
+                                                    <div class="button-group-area" style="margin-top: 10px;display: flex; justify-content: space-around;">
+                                                        <a class="genric-btn success-border circle" href="<%=basePath%>/blogedit?username=${username}&id=${blog.id}" style="font-size: 13px">编&nbsp;辑</a>
+                                                        <a class="genric-btn danger-border circle" onclick="deleteBlog(${blog.id})" style="font-size: 13px">删&nbsp;除</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
+                                </c:forEach>
                             </div>
-
                         </div>
                     </div>
                     <%--    右侧分类    --%>
-                    <div class="row"></div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3" style="width: 10%">
                         <div class="blog_right_sidebar">
-                            <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title"><a href="#">Categories</a></h4>
+                            <aside class="post_category_widget">
+                                <h4 class="widget_title"><a href="<%=basePath%>/MineServlet?username=${username}&category=all">博客分类</a></h4>
                                 <ul class="list cat-list">
-                                    <li><a href="#" class="d-flex justify-content-between"><p>政治经济</p></a></li>
-                                    <li><a href="#" class="d-flex justify-content-between"><p>科技</p></a></li>
-                                    <li><a href="#" class="d-flex justify-content-between"><p>体育</p></a></li>
-                                    <li><a href="#" class="d-flex justify-content-between"><p>健康</p></a></li>
-                                    <li><a href="#" class="d-flex justify-content-between"><p>旅游</p></a></li>
+                                    <li><a href="<%=basePath%>/MineServlet?username=${username}&category=政治经济" class="d-flex justify-content-center" style=" font-weight: bold;"><p>政治经济</p></a></li>
+                                    <li><a href="<%=basePath%>/MineServlet?username=${username}&category=科技" class="d-flex justify-content-center" style=" font-weight: bold;"><p>科技</p></a></li>
+                                    <li><a href="<%=basePath%>/MineServlet?username=${username}&category=体育" class="d-flex justify-content-center" style=" font-weight: bold;"><p>体育</p></a></li>
+                                    <li><a href="<%=basePath%>/MineServlet?username=${username}&category=健康" class="d-flex justify-content-center" style=" font-weight: bold;"><p>健康</p></a></li>
+                                    <li><a href="<%=basePath%>/MineServlet?username=${username}&category=旅游" class="d-flex justify-content-center" style=" font-weight: bold;"><p>旅游</p></a></li>
                                 </ul>
                             </aside>
+                            <br>
                             <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title" style="margin-top: 30px;"><a href="#">Operation</a></h4>
-                                <div class="button-group-area mt-10">
-                                    <a href="#" class="genric-btn info-border circle arrow">新建博文<span class="lnr lnr-arrow-right"></span></a>
-                                    <a href="#" class="genric-btn info-border circle arrow">&nbsp;草稿箱&nbsp;<span class="lnr lnr-arrow-right"></span></a>
+                                <div class="button-group-area mt-10" style="display: flex; justify-content: center">
+                                    <a href="<%=basePath%>/blogedit?username=${username}" class="genric-btn info-border circle arrow">新建博文<span class="lnr lnr-arrow-right"></span></a>
+                                </div>
+                                <div class="button-group-area mt-10" style="display: flex; justify-content: center">
+                                    <a href="<%=basePath%>/DraftServlet?username=${username}" class="genric-btn info-border circle arrow">&nbsp;草稿箱&nbsp;<span class="lnr lnr-arrow-right"></span></a>
                                 </div>
                             </aside>
                         </div>
                     </div>
-                </div>
-                <p class="col-md-7" style=" word-wrap: break-word;  word-break: break-all;  overflow: hidden;">${bvenDemo.getContent()}</>
-
-                <div class="row">
-                    <form class="col-md-12" action="<%=basePath%>/ViewControl" method="get">
-                        <div class="row bootstrap snippets">
-                            <div class="col-md-7 col-md-offset-2 col-sm-12">
-                                <div class="comment-wrapper">
-                                    <div class="panel panel-info">
-                                        <div class="panel-heading">
-                                            Comment panel<input name="viewButton" value="${bvenDemo.getId()}" style="display:none"></input>
-                                        </div>
-                                        <div class="panel-body">
-                                            <textarea class="form-control" placeholder="write a comment..." rows="3" name="commentText"></textarea>
-                                            <br>
-                                            <button type="submit" class="btn btn-info pull-right">发表评论</button>
-                                            <div class="clearfix"></div>
-                                            <hr>
-                                            <%--                        历史评论内容--%>
-
-                                            <ul class="media-list">
-                                                <c:forEach var="comList" items="${commentList}">
-                                                    <li class="media">
-
-                                                        <a href="#" class="pull-left">
-                                                            <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
-                                                        </a>
-
-                                                        <div class="media-body">
-                                                                <span class="text-muted pull-right">
-                                                                    <small class="text-muted">${comList.createTime}</small>
-                                                                </span>
-                                                            <strong class="text-success">${comList.commentator}@MartinoMont</strong>
-                                                            <p>
-                                                                    ${comList.commentBody}
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                </c:forEach>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </section>
     </div>
     <script>
-        function deleteFt(id){
+        function deleteBlog(id){
             var bool=confirm("是否删除？");
             if(bool){
-                location.href="/ideablog/DeleteBlogServlet?id="+id+"&username=${username}&category=${category}";
+                location.href="<%=basePath%>/DeleteBlogServlet?id="+id+"&username=${username}&category=${category}";
             }
         }
     </script>

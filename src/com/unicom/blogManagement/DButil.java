@@ -1,24 +1,16 @@
 package com.unicom.blogManagement;
 
+import com.unicom.util.DBUtil;
+
 import java.sql.*;
 
 public class DButil {
 	private static Connection con;
-	private static Statement state;
 	private static PreparedStatement pstm;
 	private static ResultSet rs;
-	// 1.连接数据库的方法
-	public static void getConnection() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/blog525","root","903324");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	// 2.查询相关的方法
 	public static ResultSet select(String sql, Object[] params) {
-		getConnection();
+		con=DBUtil.getConn();
 		try {
 			pstm = con.prepareStatement(sql);
 			if (params != null) {
@@ -34,7 +26,7 @@ public class DButil {
 	}
 	// 3.增加方法
 	public static void insert(String sql, Object[] params) {
-		getConnection();
+		con=DBUtil.getConn();
 		try {
 			pstm = con.prepareStatement(sql);
 			if (params != null) {
@@ -54,7 +46,7 @@ public class DButil {
 	}
 	// 4.删除方法
 	public static void delete(String sql, Object[] params) {
-		getConnection();
+		con=DBUtil.getConn();
 		try {
 			pstm = con.prepareStatement(sql);
 			if (params != null) {
@@ -72,7 +64,7 @@ public class DButil {
 	}
 	// 5.修改方法
 	public static void update(String sql, Object[] params) {
-		getConnection();
+		con=DBUtil.getConn();
 		try {
 			pstm = con.prepareStatement(sql);
 			if (params != null) {
@@ -89,20 +81,13 @@ public class DButil {
 		}
 	}
 	// 6.关闭数据库连接
-	public static void close() {
-		try {
-			if (con != null) {
-				con.close();
-			}
-			if (pstm != null) {
-				pstm.close();
-			}
-			if (state != null) {
-				state.close();
-			}
-			if (rs != null) {
-				rs.close();
-			}
-		} catch (Exception e) {}
+	public static void close(){
+		try{
+			DBUtil.close(rs);
+			DBUtil.close(con);
+			DBUtil.close(pstm);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 }
