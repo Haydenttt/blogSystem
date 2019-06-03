@@ -1,8 +1,6 @@
-package com.unicom.dao;
+package com.unicom.pagination.dao;
 
 import com.unicom.entity.Blog;
-import com.unicom.entity.User;
-import com.unicom.util.CommonUtil;
 import com.unicom.util.DBUtil;
 import com.unicom.util.StaticConstant;
 

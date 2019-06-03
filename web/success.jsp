@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"  import="com.unicom.entity.*,com.unicom.entity.*,com.unicom.register.dao.*"%>
 <%
     String basePath = request.getScheme()+"://"+request.getServerName()
-            +":"+request.getServerPort()+"/"+request.getContextPath();
+            +":"+request.getServerPort()+request.getContextPath();
 %>
 <%
     User user=new User();

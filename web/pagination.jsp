@@ -33,12 +33,12 @@
 
 <body>
 <%--页面内容--%>
-<%--<ul>--%>
-    <%--<c:forEach items="${requestScope.list}" var="p">--%>
-        <%--<li>标题：${p.title}</li>--%>
-        <%--<li>${p.content}</li>--%>
-    <%--</c:forEach>--%>
-<%--</ul>--%>
+<ul>
+    <c:forEach items="${requestScope.list}" var="p">
+        <li>标题：${p.title}</li>
+        <li>${p.content}</li>
+    </c:forEach>
+</ul>
 <%-------------------------------------------------%>
 <%--首页按钮--%>
 <%--如果是第一页,不允许点击--%>

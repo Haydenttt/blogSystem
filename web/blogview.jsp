@@ -14,7 +14,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String basePath = request.getScheme()+"://"+request.getServerName()
-            +":"+request.getServerPort()+"/"+request.getContextPath();
+            +":"+request.getServerPort()+request.getContextPath();
 %>
 <html>
 

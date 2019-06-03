@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import com.unicom.register.dao.UserBizImpl;
 import com.unicom.entity.User;
-//@WebServlet(name = "UserServlet")
+@WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

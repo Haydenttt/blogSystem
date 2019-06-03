@@ -8,17 +8,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.unicom.entity.Blog;
+import com.unicom.util.DBUtil;
+
 public class FollowService {
 
-	public List<Blog> qryFollow( String username){
+	public List<Blog> qryFollow(String username){
 		List<Blog> list = new LinkedList<>();
 		try {
 			
-			String sql = "select b.*  from follow a LEFT JOIN  blog  b"
+			String sql = "select b.*  from follow a LEFT JOIN  blog b"
 					+ " on  a.followed_name = b.username where a.follower_name = ?";
-			Connection conn = JDBCUtils.getConnection();
+			Connection conn = DBUtil.getConn();
 		    PreparedStatement qryPstmt;
-	    	qryPstmt = (PreparedStatement) conn.prepareStatement(sql);
+	    	qryPstmt = conn.prepareStatement(sql);
 	    	qryPstmt.setString(1, username);
 	    	ResultSet rs = qryPstmt.executeQuery();
 	    	while(rs.next()){
@@ -30,16 +32,12 @@ public class FollowService {
 	    		blog.setUsername(rs.getString("username"));
 	    		list.add(blog);
 	    	}
-	    	if(rs != null){
-	    		rs.close();
-	    	}
-	    	qryPstmt.close();
-	    	conn.close();
-	    
+			DBUtil.close(conn);
+			DBUtil.close(qryPstmt);
+			DBUtil.close(rs);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
-		
 	}
 }

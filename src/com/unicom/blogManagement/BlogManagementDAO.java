@@ -12,7 +12,7 @@ import java.util.List;
  * @author:
  * @create: 2019-05-27 09:03
  **/
-public class blogManagement {
+public class BlogManagementDAO {
     public List<Blog> BlogList(ResultSet rs){
         List<Blog> list=new ArrayList<Blog>();
         try {

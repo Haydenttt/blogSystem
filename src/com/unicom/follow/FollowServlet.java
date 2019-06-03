@@ -39,5 +39,4 @@ public class FollowServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
-	
 }

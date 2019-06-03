@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <%
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
 %>
 <body>
 <!--================Header Menu Area =================-->

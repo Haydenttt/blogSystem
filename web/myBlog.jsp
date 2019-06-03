@@ -5,7 +5,7 @@
   Time: 19:46
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="com.unicom.blogManagement.blogManagement,com.unicom.entity.Blog" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="com.unicom.blogManagement.BlogManagementDAO,com.unicom.entity.Blog" %>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <%
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+request.getContextPath();
-    blogManagement blogMg=new blogManagement();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
+    BlogManagementDAO blogMg=new BlogManagementDAO();
 %>
 <body>
 <!--================Header Menu Area =================-->
@@ -117,8 +117,8 @@
                         </div>
                     </div>
                     <%--    右侧分类    --%>
-                    <div class="col-lg-3" style="width: 10%">
-                        <div class="blog_right_sidebar">
+                    <div class="col-lg-3 " style="width: 10%">
+                        <div class="blog_right_sidebar position-fixed">
                             <aside class="post_category_widget">
                                 <h4 class="widget_title"><a href="<%=basePath%>/MineServlet?username=${username}&category=all">博客分类</a></h4>
                                 <ul class="list cat-list">

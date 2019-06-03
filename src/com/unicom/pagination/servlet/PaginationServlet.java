@@ -1,6 +1,6 @@
-package com.unicom.servlet;
+package com.unicom.pagination.servlet;
 
-import com.unicom.dao.BlogPaginationDao;
+import com.unicom.pagination.dao.*;
 import com.unicom.entity.Blog;
 import com.unicom.util.CommonUtil;
 import com.unicom.util.StaticConstant;
@@ -41,6 +41,6 @@ public class PaginationServlet extends HttpServlet {
       request.setAttribute("list", list);
       request.setAttribute("totalPage", totalPage);
 //      这里写整合后的jsp
-//      request.getRequestDispatcher("pagination.jsp").forward(request, response);
+      request.getRequestDispatcher("pagination.jsp").forward(request, response);
   }
 }

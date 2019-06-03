@@ -24,7 +24,7 @@
         <div id="demo2-1"></div>
         <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
         <script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
-        <script src="../js/folow.js"></script>
+        <script src="js/folow.js"></script>
         <script>
             $(document).ready(function(){
                 loadList();
