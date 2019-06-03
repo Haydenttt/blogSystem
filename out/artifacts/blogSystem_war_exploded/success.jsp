@@ -103,7 +103,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div
                 style="float: left; margin-right: 10px; width: 23%; height: 260px; background: #fff">
 
-            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #8BC34A">阅读量</p></div></div>
+            <div id="a1" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #8BC34A">阅读量</p></div></div>
             <div style="height: 130px; ">
                 <h1 align="center" style="line-height: 150px"><%=view.query(username)%></h1>
             </div>
@@ -111,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div
                 style="float: left; margin-right: 10px; width: 23%; height: 260px; background: #fff">
 
-            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #00BCD4">点赞量</p></div></div>
+            <div id="a2" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #00BCD4">点赞量</p></div></div>
             <div style="height: 130px; ">
                 <h1 align="center" style="line-height: 150px"><%=view.query2(true,username)%></h1>
             </div>
@@ -119,7 +119,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div
                 style="float: left; margin-right: 10px; width: 23%; height: 260px; background: #fff">
 
-            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div align="center" style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: red">收藏量</p></div></div>
+            <div id="a3" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div align="center" style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: red">收藏量</p></div></div>
             <div style="height: 130px; ">
                 <h1 align="center" style="line-height: 150px"><%=view.query1(false)%></h1>
             </div>
@@ -365,7 +365,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     // 指定图表的配置项和数据
 
-    setInterval(function(){//把option.series[0].data[0].value的值使用random()方法获取一个随机数
+    setTimeout(function(){//把option.series[0].data[0].value的值使用random()方法获取一个随机数
         /* 	$.ajax({
                         type : "post",
                         async : false, //同步执行
@@ -505,7 +505,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     // 指定图表的配置项和数据
 
-    setInterval(function(){//把option.series[0].data[0].value的值使用random()方法获取一个随机数
+    setTimeout(function(){//把option.series[0].data[0].value的值使用random()方法获取一个随机数
         $.ajax({
             type : "post",
             async : false, //同步执行
