@@ -99,7 +99,7 @@ public class ViewControl extends HttpServlet{
         int nulike = Integer.valueOf(bg);
         Blog b1 = vdb.blogValue(nulike);
         String followedName = b1.getUsername();
-        String username =followedName;
+        String username= (String)req.getSession().getAttribute("username");
         //添加关注量
         vdb.addIsLikes(nulike,username,followedName);
         System.out.println(nulike);

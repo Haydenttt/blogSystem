@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 public class ViewDB {
     String sql ="select * from comments";
-    String sql1 ="select * from blog";
+
     String sql2 ="select * from comments order by create_time desc";
 
 //    private static final String driver="jdbc:mysql://localhost:3306/blog525";
@@ -142,7 +142,7 @@ public Blog blogValue(int  blogId){
         return list;
     }
     //获取博客主要信息，与评论表关联的几个主要字段
-    public List<BlogView> blogPar(){
+    public List<BlogView> blogPar(int blogId){
         Connection cn =null;
         Statement statement=null;
         ResultSet resultSet =null;
@@ -154,6 +154,7 @@ public Blog blogValue(int  blogId){
             //3.1创建执行sql语句的对象，并且执行sql语句
             statement = cn.createStatement();
             //3.2 执行sql语句
+            String sql1 ="select * from blog ="+blogId;
             resultSet = statement.executeQuery(sql1);
             while (resultSet.next()){
                 BlogView bv = new BlogView();

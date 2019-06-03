@@ -25,11 +25,14 @@ import java.util.List;
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             ViewDB view = new ViewDB();
+            //接收的博客id：id，用户名称：username
+            String blogIDemo = req.getParameter("id");
+            String username = req.getParameter("username");
+            int blogID = Integer.valueOf(blogIDemo);
             List<Comment> list=new ArrayList<Comment>();
             //blogID 为传过来的博客id
-            // List<BlogView> listbv = view.blogParById(blogId);
             List<BlogView> listbv=new ArrayList<BlogView>();
-            listbv = view.blogPar();
+            listbv = view.blogPar(blogID);
             ViewControl vc = new ViewControl();
             BlogView bvenDemo = new BlogView();
             bvenDemo = listbv.get(0);
