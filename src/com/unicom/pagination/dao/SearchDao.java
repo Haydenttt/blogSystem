@@ -1,4 +1,4 @@
-package com.unicom.dao;
+package com.unicom.pagination.dao;
 
 import com.unicom.entity.Blog;
 import com.unicom.util.DBUtil;
@@ -25,7 +25,7 @@ public class SearchDao {
     String sql;
     Integer dataPerPage = StaticConstant.DATA_PER_PAGE;
 
-    public List<Blog> fuzzySearch(String keyword){
+    public List<Blog> getAllData(int currentPage,String keyword){
         List<Blog> list = new ArrayList<>();
         try {
             sql = "select * from blog525.blog where status = 1 and is_deleted = 0 and concat(title,username) like concat('%',"+keyword+",'%')limit ?,?";
@@ -67,5 +67,35 @@ public class SearchDao {
             }
         }
         return list;
+    }
+
+    //    计算总页数
+    public int getTotalPage(String keyword){
+        int pageCount = 0;
+        try {
+            sql = "select count(*) from blog525.blog where status = 1 and is_deleted = 0 and concat(title,username) like concat('%',"+keyword+",'%')limit ?,?";
+
+            conn = DBUtil.getConn();
+            pstmt = conn.prepareStatement(sql);
+
+            rs = pstmt.executeQuery();
+
+            while(rs.next()){
+                pageCount = rs.getInt(1);
+            }
+//            计算总页数
+            pageCount = pageCount % dataPerPage == 0 ? pageCount / dataPerPage : pageCount / dataPerPage + 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                DBUtil.close(rs);
+                DBUtil.close(pstmt);
+                DBUtil.close(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return pageCount;
     }
 }

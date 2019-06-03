@@ -33,10 +33,6 @@ public class ViewImpl {
 		}
 		//String sql="select id from users where follower_id=?;
 		return list;
-
-
-
-
 	}
 
 	public int query4(String username) {
@@ -58,11 +54,6 @@ public class ViewImpl {
 		}
 		//String sql="select id from users where follower_id=?;
 		return i;
-
-
-
-
-
 	}
 	public int  query(String username) {
 		// TODO Auto-generated method stub
@@ -72,8 +63,6 @@ public class ViewImpl {
 		 
 		try {
 			if (rs.next()) {
-				
-			
 				i=rs.getInt("a");
 				System.out.println(i);
 			}
@@ -81,9 +70,6 @@ public class ViewImpl {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		
-	
 		return i;
 	}
 	
@@ -95,8 +81,6 @@ public class ViewImpl {
 		 
 		try {
 			if (rs.next()) {
-				
-			
 				i=rs.getInt("a");
 				System.out.println(i);
 			}
@@ -104,9 +88,6 @@ public class ViewImpl {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		
-	
 		return i;
 	}
    public int query3(String username) {
@@ -128,11 +109,7 @@ public class ViewImpl {
 		}
 		//String sql="select id from users where follower_id=?;
 		return i;
-		
-		    
-		
-		
-		
+
 	}
 	public int  query2(Boolean is_liked,String username) {
 		// TODO Auto-generated method stub
@@ -143,8 +120,6 @@ public class ViewImpl {
 		 
 		try {
 			if (rs.next()) {
-				
-			
 				i=rs.getInt("a");
 				System.out.println(i);
 			}
@@ -152,11 +127,6 @@ public class ViewImpl {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		
-	
 		return i;
 	}
-
-
 }

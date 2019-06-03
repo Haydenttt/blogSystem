@@ -32,4 +32,4 @@
 /target/
 
 *.xml
-util/DBUtil.java
+DBUtil.java

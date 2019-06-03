@@ -1,4 +1,4 @@
-package com.unicom.dao;
+package com.unicom.pagination.dao;
 
 import com.unicom.entity.Blog;
 import com.unicom.util.DBUtil;

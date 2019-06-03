@@ -13,9 +13,9 @@
 		<script src="js/jquery-2.2.4.min.js"></script>
 		<script>
 			$(document).ready(function() {
-				
+
 				$(".form").slideDown(500);
-				
+
 				$("#landing").addClass("border-btn");
 
 				$("#registered").click(function() {
@@ -23,13 +23,13 @@
 					$("#landing-content").hide(500);
 					$(this).addClass("border-btn");
 					$("#registered-content").show(500);
-					
+
 				})
 
 				$("#landing").click(function() {
 					$("#registered").removeClass("border-btn");
 					$(this).addClass("border-btn");
-					
+
 					$("#landing-content").show(500);
 					$("#registered-content").hide(500);
 				})
@@ -41,11 +41,11 @@
 				padding: 0;
 				font-family: "微软雅黑";
 			}
-			
+
 			body {
 				background: #F7F7F7;
 			}
-			
+
 			.form {
 				position: absolute;
 				top: 50%;
@@ -58,11 +58,11 @@
 				-webkit-box-shadow: 0px 0px 10px #A6A6A6;
 				background: #fff;
 			}
-			
+
 			.border-btn {
 				border-bottom: 1px solid #ccc;
 			}
-			
+
 			#landing,
 			#registered {
 				float: left;
@@ -71,18 +71,18 @@
 				padding: 15px 0;
 				color: #545454;
 			}
-			
+
 			#landing-content {
 				clear: both;
 			}
-			
+
 			.inp {
 				height: 30px;
 				margin: 0 auto;
 				margin-bottom: 30px;
 				width: 200px;
 			}
-			
+
 			.inp>input {
 				text-align: center;
 				height: 30px;
@@ -105,7 +105,7 @@
 				transition: all 0.3s ease-in-out;
 			}
 
-			
+
 			.login {
 				border: 1px solid #A6A6A6;
 				color: #a6a6a6;
@@ -118,28 +118,28 @@
 				margin-top: 30px;
 				transition: all 0.3s ease-in-out;
 			}
-			
+
 			.login:hover {
 				background: #A6A6A6;
 				color: #fff;
 			}
-			
+
 			#bottom {
 				margin-top: 30px;
 				font-size: 13.333333px;
 				color: #a6a6a6;
 			}
-			
+
 			#registeredtxt {
 				float: left;
 				margin-left: 80px;
 			}
-			
+
 			#forgotpassword {
 				float: right;
 				margin-right: 80px;
 			}
-			
+
 			#photo {
 				border-radius: 80px;
 				border: 1px solid #ccc;
@@ -151,7 +151,7 @@
 				margin-top: 30px;
 				margin-bottom: 30px;
 			}
-			
+
 			#photo>img:hover {
 				-webkit-transform: rotateZ(360deg);
 				-moz-transform: rotateZ(360deg);
@@ -159,7 +159,7 @@
 				-ms-transform: rotateZ(360deg);
 				transform: rotateZ(360deg);
 			}
-			
+
 			#photo>img {
 				height: 80px;
 				width: 80px;
@@ -170,8 +170,8 @@
 				-o-transition: -o-transform 1s linear;
 				-ms-transition: -ms-transform 1s linear;
 			}
-			
-			
+
+
 			#registered-content {
 				margin-top: 40px;
 				display: none;
@@ -195,7 +195,7 @@
 			<div id="landing-content" >
 				<div id="photo"><img src="img/photo.jpg" /></div>
 			<form action="<%=basePath%>/UserServlet" method="get" class="container offset1 loginform">
-				
+
 				<div class="inp"><input type="text" placeholder="用户名"  name="username"/></div>
 				<div class="inp"><input type="password" placeholder="密码" name="password" /></div>
 				<input class="cc" style="margin-left:150px;width: 50px;background:#00BCD4" type="submit" value="登录">
@@ -204,7 +204,7 @@
 			</div>
 			<div id="registered-content">
 				<form action="<%=basePath %>/UserRegister" method="get" class="container offset1 loginform">
-			
+
 				<div class="inp1"><input type="text" placeholder="请输入用户名" name="username" /></div>
 				<div class="inp1"><input type="text" placeholder="请输入昵称" name="nickname" /></div>
 				<div class="inp1"><input type="password" placeholder="请输入密码" name="password" /></div>
@@ -212,8 +212,8 @@
 				<div class="inp1"><select  class="inp"1 placeholder="性别" name="gender">
 				<option value="0">女</option>
 				<option value="1">男</option>
-								
-								
+
+
 				</select></div>
 				<input class="cc" style="margin-left:130px;margin-top: -10px;background:#00BCD4" type="submit" value="立即注册">
 			</form>
