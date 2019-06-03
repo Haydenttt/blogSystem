@@ -1,6 +1,6 @@
 //判断对象是否为空的公共方法
 function isEmpty(obj) {
-    if (typeof obj == "undefined" || obj == null || obj == "") {
+    if (typeof obj == "undefined" || obj === null || obj == "" || obj=="null") {
         return true;
     } else {
         return false;

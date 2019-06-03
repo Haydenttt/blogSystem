@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -29,8 +30,8 @@ public class UserDisplayServlet extends HttpServlet {
         String loggedInUsername = null;
         Map<String, Object> topUserMap = new HashMap<>();
         try {
-            if (req.getSession().getAttribute("username") != null) {
-                loggedInUsername = req.getAttribute("username").toString();
+            if (req.getParameter("username") != null) {
+                loggedInUsername = req.getParameter("username");
                 topUserMap = Homepage.getHomepageUser(true, loggedInUsername);
             } else {
                 topUserMap = Homepage.getHomepageUser(false, null);

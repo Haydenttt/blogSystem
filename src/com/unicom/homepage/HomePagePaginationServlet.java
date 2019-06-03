@@ -1,5 +1,6 @@
 package com.unicom.homepage;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.unicom.dao.BlogPaginationDao;
 import com.unicom.entity.Blog;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @program: BlogSystem
@@ -22,6 +25,7 @@ import java.util.List;
  */
 @WebServlet("/HomePagePaginationServlet")
 public class HomePagePaginationServlet extends HttpServlet {
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -29,6 +33,9 @@ public class HomePagePaginationServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("application/json; charset=utf-8");
         BlogPaginationDao blogPaginationDao = new BlogPaginationDao();
         Integer currentPage = null;
         if (!CommonUtil.checkParam(request.getParameter(StaticConstant.currentPage))) {
@@ -38,10 +45,10 @@ public class HomePagePaginationServlet extends HttpServlet {
         }
         List<Blog> list = blogPaginationDao.getAllData(currentPage);
         Integer totalPage = blogPaginationDao.getTotalPage();
-//      request.setAttribute("list", list);
-        request.setAttribute("totalPage", totalPage);
-        System.out.println(JSONObject.toJSONString(list));
-        response.getWriter().write(JSONObject.toJSONString(list));
-//      request.getRequestDispatcher("BlogListServlet").forward(request, response);
-    }
+//        request.setAttribute("totalPage", totalPage);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("list",list);
+        jsonObject.put("totalPage",totalPage);
+        response.getWriter().write(jsonObject.toJSONString());
+     }
 }

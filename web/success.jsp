@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"  import="com.unicom.entity.*,com.unicom.entity.*,com.unicom.register.dao.*"%>
+         pageEncoding="UTF-8"  import="com.unicom.entity.User,com.unicom.register.dao.ViewImpl"%>
 <%
     String basePath = request.getScheme()+"://"+request.getServerName()
             +":"+request.getServerPort()+"/"+request.getContextPath();
@@ -64,39 +64,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav">
-                        <li class="nav-item active"><a class="nav-link" href="index.html">首页</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="index.jsp">首页</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">分类</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/single-blog.html">分类一</a>
+                                                        href="<%=basePath %>/classification.jsp?category=政治经济">政治经济</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类二</a>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="<%=basePath %>/classification.jsp?category=科技">科技</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类三</a>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="<%=basePath %>/classification.jsp?category=体育">体育</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类四</a>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="<%=basePath %>/classification.jsp?category=健康">健康</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类五</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类六</a>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="<%=basePath %>/classification.jsp?category=旅游">旅游</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/statistics.html">统计</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/myblog.html">我的博客</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp">统计</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/viewMyBlog.jsp">我的博客</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/subscribe.html">我的关注</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right header_social ml-auto">
-                        <li class="nav-item"><a href="<%=basePath %>/login.html"></i>登录</a></li>
-                        <li class="nav-item"><a href="<%=basePath %>/regist.html"></i>注册</a></li>
+                    <ul id="isLoggedIn" class="nav navbar-nav navbar-right header_social ml-auto">
+                        <li class="nav-item"><a href="<%=basePath %>/login.jsp"></i>登录/注册</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
+    <%--<div class="logo_part">--%>
+        <%--<div class="container">--%>
+            <%--<h1 class="logo">欢迎使用第八组的博客</h1>--%>
+            <%--<!-- <a class="logo" href="#"><img src="img/logo.png" alt=""></a> -->--%>
+        <%--</div>--%>
+    <%--</div>--%>
 </header>
+<!--================Header Menu Area =================-->
 
 <div style="margin-top: 80px;margin-left: 80px;">
     <div style="height: 260px;  ">

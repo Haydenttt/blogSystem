@@ -152,7 +152,7 @@ public class Homepage {
             if (rs.next()) {
                 attention = rs.getInt("attention");
             }
-            resultMap.put("username", getUserByUsername(loggedInUsername));
+            resultMap.put("user", getUserByUsername(loggedInUsername));
             resultMap.put("attention", attention);
             return resultMap;
         } else {

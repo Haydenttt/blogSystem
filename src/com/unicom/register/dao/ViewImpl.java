@@ -91,7 +91,7 @@ public class ViewImpl {
 		// TODO Auto-generated method stub
 		//List<Blog> list=new ArrayList <Blog> ();
 	  int i=0;
-		ResultSet rs=con.query("select sum(blog_id) as a from following where is_liked=?", false);
+		ResultSet rs=con.query("select sum(blog_id) as a from follow where is_liked=?", false);
 		 
 		try {
 			if (rs.next()) {
@@ -139,7 +139,7 @@ public class ViewImpl {
 		//List<Blog> list=new ArrayList <Blog> ();
 	int flat=query3(username);
 	    int i=0;
-		ResultSet rs=con.query("select sum(blog_id) as a from following where is_liked=? and follower_name=?", true,username);
+		ResultSet rs=con.query("select sum(blog_id) as a from follow where is_liked=? and follower_name=?", true,username);
 		 
 		try {
 			if (rs.next()) {

@@ -30,12 +30,10 @@ public class UserServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("username", username);
         if (bizImpl.query(username,password)) {
-            System.out.println("用户登录成功");
-
-            request.getRequestDispatcher("success.jsp").forward(request, response);
+//            System.out.println("用户登录成功");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }else {
             response.sendRedirect("error.jsp");
-
         }
 
 
