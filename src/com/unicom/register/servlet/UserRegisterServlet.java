@@ -29,6 +29,7 @@ public class UserRegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
@@ -56,21 +57,12 @@ public class UserRegisterServlet extends HttpServlet {
 			request.getRequestDispatcher("success.jsp").forward(request, response); 
 			}else {
 				response.sendRedirect("error.jsp");
-				
 			}
-		
-
-	  
-	  
-	  
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

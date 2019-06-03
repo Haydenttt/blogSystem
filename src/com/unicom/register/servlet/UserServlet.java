@@ -9,12 +9,14 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import com.unicom.register.dao.UserBizImpl;
 import com.unicom.entity.User;
-@WebServlet(name = "/UserServlet")
+@WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("utf-8");
@@ -24,8 +26,6 @@ public class UserServlet extends HttpServlet {
         UserBizImpl bizImpl=new UserBizImpl();
         User user=new User();
 
-        //System.out.println(username);
-      //  System.out.println(password);
         request.setAttribute("username", username);
         HttpSession session = request.getSession();
         session.setAttribute("username", username);
@@ -35,9 +35,6 @@ public class UserServlet extends HttpServlet {
             request.getRequestDispatcher("success.jsp").forward(request, response);
         }else {
             response.sendRedirect("error.jsp");
-
         }
-
-
     }
 }

@@ -19,10 +19,7 @@ import java.util.List;
 @WebServlet("/ViewServlet")
 public class ViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public ViewServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -31,7 +28,8 @@ public class ViewServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
         request.setCharacterEncoding("utf-8");
@@ -41,7 +39,6 @@ public class ViewServlet extends HttpServlet {
         ViewImpl view=new ViewImpl();
         List<Blog> list=new ArrayList<Blog>();
         list= view.query5();
-     //   System.out.println(list);
         Gson gson = new Gson();
       String json = gson.toJson(list);  //将Pricels转化为Json数组
 
@@ -52,18 +49,11 @@ public class ViewServlet extends HttpServlet {
        response.getWriter().print(json);
         out.flush();
         out.close();
-
-	  
-	
-	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
