@@ -233,10 +233,10 @@ public class Homepage {
         //获取所有博文的点赞量+收藏量的和
         ResultSet topRankBlogRs = DButil.select(topBlogsql, null);
         List<Blog> topRankBlogList = new ArrayList<>();
-        //统计的时间区间为过去三天
-        int topRankBlogCount = 3;
-        //获取3天前的日期
-        String startDate = DateUtil.dateCalcByDay(-3);
+        //统计的时间区间为过去30天
+        int topRankBlogCount = 30;
+        //获取30天前的日期
+        String startDate = DateUtil.dateCalcByDay(-topRankBlogCount);
         while (topRankBlogRs.next()) {
             if (getBlogByIdAndTime(topRankBlogRs.getInt("blog_id"), startDate) != null) {
                 topRankBlogList.add(getBlogByIdAndTime(topRankBlogRs.getInt("blog_id"), startDate));

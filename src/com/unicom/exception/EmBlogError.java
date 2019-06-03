@@ -1,6 +1,13 @@
 package com.unicom.exception;
 
-public enum EmBusinessError implements CommonError {
+/**
+ * @program: BlogSystem
+ * @description: 异常类
+ * @author: Hayden TONG
+ * @create: 2019-05-27 09:05
+ **/
+
+public enum EmBlogError implements CommonError {
     //通用错误类型
     PARAMETER_VALIDATION_ERROR(400001,"参数不合法"),
     UNKNOW_ERROR(410002,"未知错误"),
@@ -11,7 +18,7 @@ public enum EmBusinessError implements CommonError {
     private int errCode;
     private String errMsg;
 
-    private EmBusinessError(int errCode,String errMsg){
+    private EmBlogError(int errCode, String errMsg){
         this.errCode=errCode;
         this.errMsg=errMsg;
     }
