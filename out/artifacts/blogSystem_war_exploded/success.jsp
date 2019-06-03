@@ -89,8 +89,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/subscribe.html">我的关注</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right header_social ml-auto">
-                        <li class="nav-item"><a href="<%=basePath %>/login.html"></i>登录</a></li>
-                        <li class="nav-item"><a href="<%=basePath %>/regist.html"></i>注册</a></li>
+                        <li class="nav-item"><a href="<%=basePath %>/login.jsp"></i>退出</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -141,7 +141,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div
                         style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
                     <div style="height: 50px; background: red">
-                        <p align="center" style="line-height: 50px">分类阅读量</p>
+                        <p align="center" style="line-height: 50px">点赞量前6</p>
                     </div>
                     <div id="dd" style="height: 200px;"></div>
                 </div>
@@ -421,7 +421,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         tooltip : {
             trigger: 'axis',
             formatter:function(params){
-                return params[0].name+params[0].seriesName+":"+params[0].data+"人" }
+                return params[0].name+params[0].seriesName+":"+params[0].data+"次" }
         },
         toolbox: {
             show : true,
@@ -432,21 +432,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             x: 'center' ,
 
             y:  'top' ,
-            data:[{name:'4G用户量',
+            data:[{name:'点赞次数',
                 textStyle:{color:"#4ad2ff"}
-            },
+            }
 
-                {name:'5G用流量',
-                    textStyle:{color:"#4ad2ff"}
-
-                },
-                {name:'4G用户量',
-                    textStyle:{color:"#4ad2ff"}
-                },
-                {name:'4G用流量',
-                    textStyle:{color:"#4ad2ff"}
-
-                }],
+                ],
 
 
 
@@ -519,7 +509,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         $.ajax({
             type : "post",
             async : false, //同步执行
-            url : "ViewServlet",
+            url : "FollowServlet",
             data : {},
             dataType : "json", //返回数据形式为json
             success : function(data1) {
@@ -537,7 +527,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 $.each(data1, function(index,obj) {
 
                     if(index<7)	{
-                        cc[index]=data1[index].views
+                        cc[index]=data1[index].id
                         // alert( cc[index]);
                     }
                 });
@@ -558,7 +548,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 // alert(134)
                 myChart9.setOption(option9, true);
-                /*  }})  */}})},60*60*1000);
+                /*  }})  */}})},1000);
 </script>
 	
      

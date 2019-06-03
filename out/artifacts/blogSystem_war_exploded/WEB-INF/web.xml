@@ -5,6 +5,14 @@
          version="4.0">
     <display-name>blogSystem</display-name>
     <servlet>
+        <servlet-name>FollowServlet</servlet-name>
+        <servlet-class>com.unicom.register.servlet.FollowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FollowServlet</servlet-name>
+        <url-pattern>/FollowServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>com.unicom.register.servlet.UserServlet</servlet-class>
     </servlet>

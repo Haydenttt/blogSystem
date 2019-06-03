@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%
  String basePath = request.getScheme()+"://"+request.getServerName()
- +":"+request.getServerPort()+"/"+request.getContextPath();
+ +":"+request.getServerPort()+""+request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -209,7 +209,7 @@
 				<div class="inp1"><input type="text" placeholder="请输入昵称" name="nickname" /></div>
 				<div class="inp1"><input type="password" placeholder="请输入密码" name="password" /></div>
 				<div class="inp1"><input type="text" placeholder="电子邮箱"  name="email" /></div>
-				<div class="inp1"><select  class="inp"1 placeholder="性别" name="gender">
+				<div class="inp1"><select  class="inp1" placeholder="性别" name="gender">
 				<option value="0">女</option>
 				<option value="1">男</option>
 								

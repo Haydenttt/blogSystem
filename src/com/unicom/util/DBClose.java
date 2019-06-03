@@ -1,11 +1,6 @@
 package com.unicom.util;
 
-import com.mysql.jdbc.PreparedStatement;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DBClose {
     //释放资源

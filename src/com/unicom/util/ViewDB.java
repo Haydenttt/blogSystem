@@ -116,7 +116,6 @@ public class ViewDB {
                 comment.setCommentBody(commentBody);
                 comment.setCreateTime(createTime);
                 comment.setReplyBody(replyBody);
-                comment.setReplyCreateTime(replyCreateTime);
                 int isComments = resultSet.getInt("is_comments");
                 if (isComments==0){
                     comment.setIsComments(true);
@@ -171,7 +170,6 @@ public class ViewDB {
                 comment.setCommentBody(commentBody);
                 comment.setCreateTime(createTime);
                 comment.setReplyBody(replyBody);
-                comment.setReplyCreateTime(replyCreateTime);
                 int isComments = resultSet.getInt("is_comments");
                 if (isComments==0){
                     comment.setIsComments(true);

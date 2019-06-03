@@ -2,7 +2,7 @@
          pageEncoding="UTF-8" import="com.unicom.entity.*" %>
 <%
     String basePath = request.getScheme()+"://"+request.getServerName()
-            +":"+request.getServerPort()+"/"+request.getContextPath();
+            +":"+request.getServerPort()+""+request.getContextPath();
 %>
 <%
     User user=new User();
@@ -64,8 +64,10 @@
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/subscribe.html">我的关注</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right header_social ml-auto">
-                        <li class="nav-item"><a href="<%=basePath %>/login.html"></i>登录</a></li>
-                        <li class="nav-item"><a href="<%=basePath %>/regist.html"></i>注册</a></li>
+
+
+                        <li class="nav-item"><a href="<%=basePath %>/login.jsp"></i>退出</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -79,7 +81,7 @@
         <ul class="reg_ul" style="list-style-type:none">
             <li>
                 <span>用户名：</span>
-                <input type="text" readonly value="<%=username%>" name="user" placeholder="请修改用户名" class="reg_user">
+                <input type="text" readonly value="<%=session.getAttribute("username")%>" name="user" placeholder="请修改用户名" class="reg_user">
                 <span class="tip user_hint"></span>
             </li>
             <li>
