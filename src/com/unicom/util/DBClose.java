@@ -1,10 +1,11 @@
 package com.unicom.util;
 
-import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.*;
 
+
+import java.sql.*;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 public class DBClose {

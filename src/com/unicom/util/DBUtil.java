@@ -18,7 +18,7 @@ public class DBUtil {
     //数据库用户名
     private static final String USER_NAME = "root";
     //用户密码
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "123456";
 
     /**
      * 得到连接
@@ -52,7 +52,17 @@ public class DBUtil {
             rs = null;
         }
     }
-
+    /**
+     * 关闭Statement对象
+     * @param Statement 处理数据的对象
+     * @throws SQLException
+     */
+    public static void close(Statement Statement) throws SQLException{
+        if(Statement != null){
+            Statement.close();
+            Statement = null;
+        }
+    }
     /**
      * 关闭PreparedStatement对象
      * @param pstmt 处理数据的对象

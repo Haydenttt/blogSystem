@@ -25,12 +25,17 @@
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-    <dependency>
+<!--    <dependency>-->
+<!--      <groupId>mysql</groupId>-->
+<!--      <artifactId>mysql-connector-java</artifactId>-->
+<!--      <version>8.0.15</version>-->
+<!--    </dependency>-->
+<!--    mysql  5.7版本  依赖-->
+        <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.15</version>
+      <version>5.1.8</version>
     </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -79,7 +84,19 @@
           <artifactId>taglibs-standard-spec</artifactId>
           <version>1.2.5</version>
       </dependency>
-<!--      <dependency>-->
+    <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20180813</version>
+    </dependency>
+
+    <!--      <dependency>-->
 <!--          <groupId>jstl</groupId>-->
 <!--          <artifactId>jstl</artifactId>-->
 <!--          <version>1.2</version>-->
