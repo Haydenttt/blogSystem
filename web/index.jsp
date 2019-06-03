@@ -71,7 +71,7 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp">统计</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/viewMyBlog.jsp">我的博客</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/blogList/templates/follow.jsp">我的关注</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/follow.jsp">我的关注</a></li>
                     </ul>
                         <ul id="isLoggedIn" class="nav navbar-nav navbar-right header_social ml-auto">
                             <li class="nav-item"><a href="<%=basePath %>/login.jsp"></i>登录/注册</a></li>

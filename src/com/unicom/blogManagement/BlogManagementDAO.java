@@ -93,7 +93,7 @@ public class BlogManagementDAO {
     }
 
     public int findLikes(int id){
-        String sql="select COUNT(id) from follow where blog_id=? and is_liked=1;";
+        String sql="select COUNT(id) from follow where blog_id=? and is_liked=1 and is_cancelled=0";
         Object[] params={id};
         ResultSet rs=DButil.select(sql, params);
         int likes=0;

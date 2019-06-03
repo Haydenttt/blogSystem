@@ -2,7 +2,7 @@ package com.unicom.homepage;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.unicom.dao.BlogPaginationDao;
+import com.unicom.pagination.dao.BlogPaginationDao;
 import com.unicom.entity.Blog;
 import com.unicom.util.CommonUtil;
 import com.unicom.util.StaticConstant;
