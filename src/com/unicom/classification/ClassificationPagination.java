@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ClassficationPagination {
+public class ClassificationPagination {
     Connection conn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;

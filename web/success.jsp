@@ -238,7 +238,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     function isLoggedIn() {
         var username = "<%=request.getSession().getAttribute("username") %>";
         if (!isEmpty(username)) {
-            $("#isLoggedIn").html('<li class="nav-item">欢迎你，' + username + '</li>');
+            $("#isLoggedIn").html('<li class="nav-item"><a href="<%=basePath %>/edit.jsp">'+'欢迎你，' + username + '</a></li>');
         }
         ;
     }

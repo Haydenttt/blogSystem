@@ -11,7 +11,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String basePath = request.getScheme() + "://" + request.getServerName()
-            + ":" + request.getServerPort() + "/" + request.getContextPath();
+            + ":" + request.getServerPort() + request.getContextPath();
 %>
 <html>
 
@@ -277,7 +277,7 @@
     function isLoggedIn() {
         var username = "<%=request.getSession().getAttribute("username") %>";
         if (!isEmpty(username)) {
-            $("#isLoggedIn").html('<li class="nav-item">欢迎你，' + username + '</li>');
+            $("#isLoggedIn").html('<li class="nav-item"><a href="<%=basePath %>/edit.jsp">'+'欢迎你，' + username + '</a></li>');
         }
         ;
     }

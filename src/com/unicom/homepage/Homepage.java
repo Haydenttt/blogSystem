@@ -234,9 +234,9 @@ public class Homepage {
         ResultSet topRankBlogRs = DButil.select(topBlogsql, null);
         List<Blog> topRankBlogList = new ArrayList<>();
         //统计的时间区间为过去三天
-        int topRankBlogCount = 3;
+        int topRankBlogCount = 30;
         //获取3天前的日期
-        String startDate = DateUtil.dateCalcByDay(-3);
+        String startDate = DateUtil.dateCalcByDay(-topRankBlogCount);
         while (topRankBlogRs.next()) {
             if (getBlogByIdAndTime(topRankBlogRs.getInt("blog_id"), startDate) != null) {
                 topRankBlogList.add(getBlogByIdAndTime(topRankBlogRs.getInt("blog_id"), startDate));

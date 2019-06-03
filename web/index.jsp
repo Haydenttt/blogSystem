@@ -354,9 +354,9 @@
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="搜索博文">
+                            <input id="blogSearch" type="text" class="form-control" placeholder="搜索博文">
                             <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i
+                                    <button id="blogSearchBtn" class="btn btn-default btn-primary" onclick="searchBlog();"><i
                                             class="lnr lnr-magnifier"></i></button>
                                 </span>
                         </div><!-- /input-group -->
@@ -853,9 +853,15 @@
     function isLoggedIn() {
         var username = "<%=request.getSession().getAttribute("username") %>";
         if (!isEmpty(username)) {
-            $("#isLoggedIn").html('<li class="nav-item">欢迎你，' + username + '</li>');
+            $("#isLoggedIn").html('<li class="nav-item"><a href="<%=basePath %>/edit.jsp">'+'欢迎你，' + username + '</a></li>');
         }
         ;
+    }
+
+    function searchBlog() {
+        var keyword = $("#blogSearch").val();
+        console.log(keyword);
+        location.href="<%=basePath %>/classification.jsp?keyword=" + keyword;
     }
 </script>
 </body>

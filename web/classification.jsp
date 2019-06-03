@@ -8,11 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String basePath = request.getScheme() + "://" + request.getServerName()
-            + ":" + request.getServerPort() + "/" + request.getContextPath();
+            + ":" + request.getServerPort() + request.getContextPath();
 %>
 <html>
 <head>
-    <title>博客目录</title>
+    <link rel="icon" href="<%=basePath %>/img/favicon.png" type="image/png">
+    <title>博客列表</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<%=basePath %>/css/bootstrap.css">
     <link rel="stylesheet" href="<%=basePath %>/vendors/linericon/style.css">
@@ -25,6 +26,9 @@
     <!-- main css -->
     <link rel="stylesheet" href="<%=basePath %>/css/style.css">
     <link rel="stylesheet" href="<%=basePath %>/css/responsive.css">
+    <!-- 自定义css -->
+    <link rel="stylesheet" href="<%=basePath %>/css/pagination.css">
+    <link rel="stylesheet" href="<%=basePath %>/css/homepage.css">
 </head>
 <body>
 
@@ -67,20 +71,21 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp">统计</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/viewMyBlog.jsp">我的博客</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/blogList/templates/follow.jsp">我的关注</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/blogList/templates/follow.jsp">我的关注</a>
+                        </li>
                     </ul>
                     <ul id="isLoggedIn" class="nav navbar-nav navbar-right header_social ml-auto">
-                        <li class="nav-item"><a href="<%=basePath %>/login.jsp"></i>登录/注册</a></li>
+                        <li class="nav-item"><a href="<%=basePath %>/login.jsp">登录/注册</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
     <%--<div class="logo_part">--%>
-        <%--<div class="container">--%>
-            <%--<h1 class="logo">欢迎使用第八组的博客</h1>--%>
-            <%--<!-- <a class="logo" href="#"><img src="img/logo.png" alt=""></a> -->--%>
-        <%--</div>--%>
+    <%--<div class="container">--%>
+    <%--<h1 class="logo">欢迎使用第八组的博客</h1>--%>
+    <%--<!-- <a class="logo" href="#"><img src="img/logo.png" alt=""></a> -->--%>
+    <%--</div>--%>
     <%--</div>--%>
 </header>
 <!--================Header Menu Area =================-->
@@ -99,9 +104,11 @@
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="搜索博文">
+                            <input id="blogSearch" type="text" class="form-control"
+                                                        placeholder="搜索博文">
                             <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i
+                                    <button id="blogSearchBtn" class="btn btn-default btn-primary"
+                                            onclick="searchBlog();"><i
                                             class="lnr lnr-magnifier"></i></button>
                                 </span>
                         </div><!-- /input-group -->
@@ -213,184 +220,361 @@
 <script src="<%=basePath %>/js/common.js"></script>
 <script>
 
-    function getQueryString(key){
-        var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+    function getQueryString(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
         var result = window.location.search.substr(1).match(reg);
-        return result?decodeURIComponent(result[2]):null;
+        return result ? decodeURIComponent(result[2]) : null;
     }
 
     $(document).ready(function () {
-        var defaultBlogImg = "<%=basePath %>/img/home-blog/blog-4.jpg";//设置默认博客图片，当博客没有图片时置为默认图
-        var defaultTopBlogImg = "<%=basePath %>/img/blog/popular-post/post1.jpg";//设置默认热门博文图片，当博客没有图片时置为默认图
-        var category = GetQueryString("category");
-        var category1= getQueryString("category")
-        var currentPage = GetQueryString("currentPage");
-        isLoggedIn();
-        if(category !=null && category.toString().length>1)
-        {
-            $.ajax({
-                url: 'ClassificationServlet',//请求的后台servlet地址
-                dataType: 'json',//数据格式 
-                type: 'post',//请求方式
-                async: false,//是否异步请求
-                data: {
-                    category: category,
-                },
-                success: function (data) {   //如果请求成功，返回数据。
-                    var blogDivList = '';
-                    var totalPage = data.totalPage;
-                    var list = data.list;
-                    for (var i = 0; i < list.length; i++) {    //遍历data数组
-                        var blog = list[i];
-                        var blogImg = isEmpty(blog.coverImageUrl) ? defaultBlogImg : blog.coverImageUrl;
-                        blogDivList += " <div class='row'><articl blog-id='" + blog.id + "' class='blog_style1'> " +
-                            "<div class='blog_img'> " +
-                            "	<img class='img-fluid img-fill blog-img-init' src='" + blogImg + "' alt=''>" +
-                            "</div>" +
-                            "<div class='blog_text'>" +
-                            "	<div class='blog_text_inner'>" +
-                            "	<div class='cat'>" +
-                            "<a class='cat_btn' href='#'>收藏</a>" +
-                            "<a href='#'><i class='fa fa-calendar' aria-hidden='true'></i>" + blog.updateTime + "</a>" +
-                            "<a href='#'><i class='fa fa-comments-o' aria-hidden='true'></i>" + blog.views + "</a>" +
-                            "</div>" +
-                            "<a href='#'><h4>" + blog.title + "</h4></a>" +
-                            "<p>" + blog.content.substr(0, 200) + "...</p>" +
-                            "<a class='blog_btn' href='#'>查看更多</a>" +
-                            "</div>" +
-                            "</div>" +
-                            "</article></div>";
-                    }
-                    $('#blogList').html(blogDivList); //在html页面id=test的标签里显示html内容
-                    var begin, end;
-                    var pagination = '';
-                    //如果是第一页,不允许点击
-                    pagination = '<div class="page-navbar">' +
-                        '<div class="nav-mainpage">';
-                    if (currentPage == 1)
-                        pagination += '<nav aria-label="Page navigation example">' +
-                            '<ul class="pagination">' +
-                            '<li class="disabled">' +
-                            '<a class="page-link">首页</a>' +
-                            '</li>' +
-                            '<li class="disabled">' +
-                            '<a class="page-link" aria-label="Previous">' +
-                            '<span aria-hidden="true">&laquo;</span>' +
-                            '<span class="sr-only"></span>' +
-                            '</a>' +
-                            '</li>' +
-                            '</ul>' +
-                            '</nav>';
-                    else {
-                        pagination +=
-                            //其他页，点击直达首页
-                            ' <nav aria-label="Page navigation example">' +
-                            '   <ul class="pagination">' +
-                            '   <li class="page-item">' +
-                            '    <a class="page-link" href="classification.jsp?category='+category1+'&currentPage=1">首页</a>' +
-                            '    </li>' +
-                            //其他页，点击到上一页
-                            '   <li class="page-item">' +
-                            '     <a class="page-link" href="classification.jsp?category='+category1+'&currentPage=' + (totalPage - 1) + '"' +
-                            '       aria-label="Previous">' +
-                            '       <span aria-hidden="true">&laquo;</span>' +
-                            '       <span class="sr-only"></span>' +
-                            '     </a>' +
-                            '  </li>' +
-                            ' </ul>' +
-                            '   </nav>' +
-                            ' </div >' +
-                            '</div >';
-                    }
-                    pagination +=
-                        '<div class="nav-pagenum">';
-                    if (totalPage <= 3) {
-                        begin = 1;
-                        end = totalPage;
-                    } else {
-                        begin = currentPage - 1;
-                        end = currentPage + 1;
-                        if (begin - 1 <= 0) {
-                            begin = 1;
-                            end = 3;
+            var defaultBlogImg = "<%=basePath %>/img/home-blog/blog-4.jpg";//设置默认博客图片，当博客没有图片时置为默认图
+            var defaultTopBlogImg = "<%=basePath %>/img/blog/popular-post/post1.jpg";//设置默认热门博文图片，当博客没有图片时置为默认图
+            var category = GetQueryString("category");
+            var category1 = getQueryString("category");
+            var keyword = GetQueryString("keyword");
+            var keyword1 = getQueryString("keyword")
+            var currentPage = GetQueryString("currentPage");
+            var blogListUrl = '';
+            var data = '';
+            isLoggedIn();
+            if (!isEmpty(keyword)) {
+                blogListUrl = 'search';
+                data = {
+                    keyword: keyword,
+                    currentPage: currentPage
+                };
+                $.ajax({
+                    url: blogListUrl,//请求的后台servlet地址
+                    dataType: 'json',//数据格式 
+                    type: 'post',//请求方式
+                    async: false,//是否异步请求
+                    data: data,
+                    success: function (data) {   //如果请求成功，返回数据。
+                        console.log(data);
+                        var blogDivList = '';
+                        var totalPage = data.totalPage;
+                        var list = data.list;
+                        for (var i = 0; i < list.length; i++) {    //遍历data数组
+                            var blog = list[i];
+                            var blogImg = isEmpty(blog.coverImageUrl) ? defaultBlogImg : blog.coverImageUrl;
+                            blogDivList += " <div class='row'><articl blog-id='" + blog.id + "' class='blog_style1'> " +
+                                "<div class='blog_img'> " +
+                                "	<img class='img-fluid img-fill blog-img-init' src='" + blogImg + "' alt=''>" +
+                                "</div>" +
+                                "<div class='blog_text'>" +
+                                "	<div class='blog_text_inner'>" +
+                                "	<div class='cat'>" +
+                                "<a class='cat_btn' href='#'>收藏</a>" +
+                                "<a href='#'><i class='fa fa-calendar' aria-hidden='true'></i>" + blog.updateTime + "</a>" +
+                                "<a href='#'><i class='fa fa-comments-o' aria-hidden='true'></i>" + blog.views + "</a>" +
+                                "</div>" +
+                                "<a href='#'><h4>" + blog.title + "</h4></a>" +
+                                "<p>" + blog.content.substr(0, 200) + "...</p>" +
+                                "<a class='blog_btn' href='#'>查看更多</a>" +
+                                "</div>" +
+                                "</div>" +
+                                "</article></div>";
                         }
-                        if (end > totalPage) {
-                            begin = totalPage - 2;
-                            end = totalPage;
-                        }
-                    }
-                    for (var i = begin; i <= end; i++) {
-                        if (i == currentPage) {
+                        $('#blogList').html(blogDivList); //在html页面id=test的标签里显示html内容
+                        var begin, end;
+                        var pagination = '';
+                        //如果是第一页,不允许点击
+                        pagination = '<div class="page-navbar">' +
+                            '<div class="nav-mainpage">';
+                        if (currentPage == 1)
                             pagination += '<nav aria-label="Page navigation example">' +
                                 '<ul class="pagination">' +
-                                '<li class="active" > ' +
-                                '<a class="page-link" > ' + i + ' </a > ' +
-                                '</li > ' +
-                                '</ul > ' +
+                                '<li class="disabled">' +
+                                '<a class="page-link">首页</a>' +
+                                '</li>' +
+                                '<li class="disabled">' +
+                                '<a class="page-link" aria-label="Previous">' +
+                                '<span aria-hidden="true">&laquo;</span>' +
+                                '<span class="sr-only"></span>' +
+                                '</a>' +
+                                '</li>' +
+                                '</ul>' +
+                                '</nav>';
+                        else {
+                            pagination +=
+                                //其他页，点击直达首页
+                                ' <nav aria-label="Page navigation example">' +
+                                '   <ul class="pagination">' +
+                                '   <li class="page-item">' +
+                                '    <a class="page-link" href="classification.jsp?keyword=' + keyword1 + '&currentPage=1">首页</a>' +
+                                '    </li>' +
+                                //其他页，点击到上一页
+                                '   <li class="page-item">' +
+                                '     <a class="page-link" href="classification.jsp?keyword=' + keyword1 + '&currentPage=' + (totalPage - 1) + '"' +
+                                '       aria-label="Previous">' +
+                                '       <span aria-hidden="true">&laquo;</span>' +
+                                '       <span class="sr-only"></span>' +
+                                '     </a>' +
+                                '  </li>' +
+                                ' </ul>' +
+                                '   </nav>' +
+                                ' </div >' +
+                                '</div >';
+                        }
+                        pagination +=
+                            '<div class="nav-pagenum">';
+                        if (totalPage <= 3) {
+                            begin = 1;
+                            end = totalPage;
+                        } else {
+                            begin = currentPage - 1;
+                            end = currentPage + 1;
+                            if (begin - 1 <= 0) {
+                                begin = 1;
+                                end = 3;
+                            }
+                            if (end > totalPage) {
+                                begin = totalPage - 2;
+                                end = totalPage;
+                            }
+                        }
+                        for (var i = begin; i <= end; i++) {
+                            if (i == currentPage) {
+                                pagination += '<nav aria-label="Page navigation example">' +
+                                    '<ul class="pagination">' +
+                                    '<li class="active" > ' +
+                                    '<a class="page-link" > ' + i + ' </a > ' +
+                                    '</li > ' +
+                                    '</ul > ' +
+                                    '</nav>';
+                            } else {
+                                pagination += ' <nav aria-label="Page navigation example">' +
+                                    '<ul class="pagination">' +
+                                    '<li class="page-item">' +
+                                    ' <a class="page-link" href="classification.jsp?keyword=' + keyword1 + '&currentPage=' + i + '">' + i + '</a>' +
+                                    '  </li>' +
+                                    '  </ul>' +
+                                    '</nav>';
+                            }
+                        }
+                        pagination += '</div >';
+                        /*======================================================================= */
+                        pagination += '<div class="nav-lastpage">';
+                        if (currentPage == totalPage) {
+                            pagination += '<nav aria-label="Page navigation example">' +
+                                '  <ul class="pagination">' +
+                                ' <li class="disabled">' +
+                                '   <a class="page-link">末页</a>' +
+                                '  </li>' +
+                                '    <li class="disabled">' +
+                                '  <a class="page-link" aria-label="Next">' +
+                                '   <span aria-hidden="true">&raquo;</span>' +
+                                '   <span class="sr-only"></span>' +
+                                ' </a>' +
+                                '</li>' +
+                                '   <li class="page-item">' +
+                                '  <p class="page-item">' +
+                                '  <button type="button" class="btn btn-outline-primary">共' + totalPage + '页' +
+                                '        </button>' +
+                                ' </p>' +
+                                ' </li>' +
+                                ' </ul>' +
                                 '</nav>';
                         } else {
-                            pagination += ' <nav aria-label="Page navigation example">' +
+                            pagination += '   <nav aria-label="Page navigation example">' +
                                 '<ul class="pagination">' +
-                                '<li class="page-item">' +
-                                ' <a class="page-link" href="classification.jsp?category='+category1+'&currentPage=' + i + '">' + i + '</a>' +
+                                '       <li class="page-item">' +
+                                '    <a class="page-link" href="classification.jsp?keyword=' + keyword1 + '&currentPage=' + currentPage + 1 + '"' +
+                                '        aria-label="Previous">' +
+                                '         <span aria-hidden="true">&raquo;</span>' +
+                                '         <span class="sr-only"></span>' +
+                                '     </a>' +
+                                '   </li>' +
+                                ' <li class="page-item">' +
+                                '    <a class="page-link" href="classification.jsp?keyword=' + keyword1 + '&currentPage=' + totalPage + '">末页</a>' +
+                                '   </li>' +
+                                '  <li class="page-item">' +
+                                '    <p class="page-item">' +
+                                '        <button type="button" class="btn btn-outline-primary">共' + totalPage + '页' +
+                                '                </button>' +
+                                '     </p>' +
                                 '  </li>' +
-                                '  </ul>' +
+                                '</ul>' +
                                 '</nav>';
                         }
+                        pagination += '</div></div>';
+                        $("#paginationNav").html(pagination);
+                    },
+                    error: function (data, type, err) {
+                        console.log("ajax错误类型：" + type);
+                        console.log(err);
                     }
-                    pagination += '</div >';
-                    /*======================================================================= */
-                    pagination += '<div class="nav-lastpage">';
-                    if (currentPage == totalPage) {
-                        pagination += '<nav aria-label="Page navigation example">' +
-                            '  <ul class="pagination">' +
-                            ' <li class="disabled">' +
-                            '   <a class="page-link">末页</a>' +
-                            '  </li>' +
-                            '    <li class="disabled">' +
-                            '  <a class="page-link" aria-label="Next">' +
-                            '   <span aria-hidden="true">&raquo;</span>' +
-                            '   <span class="sr-only"></span>' +
-                            ' </a>' +
-                            '</li>' +
-                            '   <li class="page-item">' +
-                            '  <p class="page-item">' +
-                            '  <button type="button" class="btn btn-outline-primary">共' + totalPage + '页' +
-                            '        </button>' +
-                            ' </p>' +
-                            ' </li>' +
-                            ' </ul>' +
-                            '</nav>';
-                    } else {
-                        pagination += '   <nav aria-label="Page navigation example">' +
-                            '<ul class="pagination">' +
-                            '       <li class="page-item">' +
-                            '    <a class="page-link" href="classification.jsp?category='+category1+'&currentPage=' + currentPage + 1 + '"' +
-                            '        aria-label="Previous">' +
-                            '         <span aria-hidden="true">&raquo;</span>' +
-                            '         <span class="sr-only"></span>' +
-                            '     </a>' +
-                            '   </li>' +
-                            ' <li class="page-item">' +
-                            '    <a class="page-link" href="classification.jsp?category='+category1+'&currentPage=' + totalPage + '">末页</a>' +
-                            '   </li>' +
-                            '  <li class="page-item">' +
-                            '    <p class="page-item">' +
-                            '        <button type="button" class="btn btn-outline-primary">共' + totalPage + '页' +
-                            '                </button>' +
-                            '     </p>' +
-                            '  </li>' +
-                            '</ul>' +
-                            '</nav>';
+                })
+            } else {
+                blogListUrl = 'ClassificationServlet';
+                data = {
+                    category: category
+                };
+                $.ajax({
+                    url: blogListUrl,//请求的后台servlet地址
+                    dataType: 'json',//数据格式 
+                    type: 'post',//请求方式
+                    async: false,//是否异步请求
+                    data: data,
+                    success: function (data) {   //如果请求成功，返回数据。
+                        console.log(data);
+                        var blogDivList = '';
+                        var totalPage = data.totalPage;
+                        var list = data.list;
+                        for (var i = 0; i < list.length; i++) {    //遍历data数组
+                            var blog = list[i];
+                            var blogImg = isEmpty(blog.coverImageUrl) ? defaultBlogImg : blog.coverImageUrl;
+                            blogDivList += " <div class='row'><articl blog-id='" + blog.id + "' class='blog_style1'> " +
+                                "<div class='blog_img'> " +
+                                "	<img class='img-fluid img-fill blog-img-init' src='" + blogImg + "' alt=''>" +
+                                "</div>" +
+                                "<div class='blog_text'>" +
+                                "	<div class='blog_text_inner'>" +
+                                "	<div class='cat'>" +
+                                "<a class='cat_btn' href='#'>收藏</a>" +
+                                "<a href='#'><i class='fa fa-calendar' aria-hidden='true'></i>" + blog.updateTime + "</a>" +
+                                "<a href='#'><i class='fa fa-comments-o' aria-hidden='true'></i>" + blog.views + "</a>" +
+                                "</div>" +
+                                "<a href='#'><h4>" + blog.title + "</h4></a>" +
+                                "<p>" + blog.content.substr(0, 200) + "...</p>" +
+                                "<a class='blog_btn' href='#'>查看更多</a>" +
+                                "</div>" +
+                                "</div>" +
+                                "</article></div>";
+                        }
+                        $('#blogList').html(blogDivList); //在html页面id=test的标签里显示html内容
+                        var begin, end;
+                        var pagination = '';
+                        //如果是第一页,不允许点击
+                        pagination = '<div class="page-navbar">' +
+                            '<div class="nav-mainpage">';
+                        if (currentPage == 1)
+                            pagination += '<nav aria-label="Page navigation example">' +
+                                '<ul class="pagination">' +
+                                '<li class="disabled">' +
+                                '<a class="page-link">首页</a>' +
+                                '</li>' +
+                                '<li class="disabled">' +
+                                '<a class="page-link" aria-label="Previous">' +
+                                '<span aria-hidden="true">&laquo;</span>' +
+                                '<span class="sr-only"></span>' +
+                                '</a>' +
+                                '</li>' +
+                                '</ul>' +
+                                '</nav>';
+                        else {
+                            pagination +=
+                                //其他页，点击直达首页
+                                ' <nav aria-label="Page navigation example">' +
+                                '   <ul class="pagination">' +
+                                '   <li class="page-item">' +
+                                '    <a class="page-link" href="classification.jsp?category=' + category1 + '&currentPage=1">首页</a>' +
+                                '    </li>' +
+                                //其他页，点击到上一页
+                                '   <li class="page-item">' +
+                                '     <a class="page-link" href="classification.jsp?category=' + category1 + '&currentPage=' + (totalPage - 1) + '"' +
+                                '       aria-label="Previous">' +
+                                '       <span aria-hidden="true">&laquo;</span>' +
+                                '       <span class="sr-only"></span>' +
+                                '     </a>' +
+                                '  </li>' +
+                                ' </ul>' +
+                                '   </nav>' +
+                                ' </div >' +
+                                '</div >';
+                        }
+                        pagination +=
+                            '<div class="nav-pagenum">';
+                        if (totalPage <= 3) {
+                            begin = 1;
+                            end = totalPage;
+                        } else {
+                            begin = currentPage - 1;
+                            end = currentPage + 1;
+                            if (begin - 1 <= 0) {
+                                begin = 1;
+                                end = 3;
+                            }
+                            if (end > totalPage) {
+                                begin = totalPage - 2;
+                                end = totalPage;
+                            }
+                        }
+                        for (var i = begin; i <= end; i++) {
+                            if (i == currentPage) {
+                                pagination += '<nav aria-label="Page navigation example">' +
+                                    '<ul class="pagination">' +
+                                    '<li class="active" > ' +
+                                    '<a class="page-link" > ' + i + ' </a > ' +
+                                    '</li > ' +
+                                    '</ul > ' +
+                                    '</nav>';
+                            } else {
+                                pagination += ' <nav aria-label="Page navigation example">' +
+                                    '<ul class="pagination">' +
+                                    '<li class="page-item">' +
+                                    ' <a class="page-link" href="classification.jsp?category=' + category1 + '&currentPage=' + i + '">' + i + '</a>' +
+                                    '  </li>' +
+                                    '  </ul>' +
+                                    '</nav>';
+                            }
+                        }
+                        pagination += '</div >';
+                        /*======================================================================= */
+                        pagination += '<div class="nav-lastpage">';
+                        if (currentPage == totalPage) {
+                            pagination += '<nav aria-label="Page navigation example">' +
+                                '  <ul class="pagination">' +
+                                ' <li class="disabled">' +
+                                '   <a class="page-link">末页</a>' +
+                                '  </li>' +
+                                '    <li class="disabled">' +
+                                '  <a class="page-link" aria-label="Next">' +
+                                '   <span aria-hidden="true">&raquo;</span>' +
+                                '   <span class="sr-only"></span>' +
+                                ' </a>' +
+                                '</li>' +
+                                '   <li class="page-item">' +
+                                '  <p class="page-item">' +
+                                '  <button type="button" class="btn btn-outline-primary">共' + totalPage + '页' +
+                                '        </button>' +
+                                ' </p>' +
+                                ' </li>' +
+                                ' </ul>' +
+                                '</nav>';
+                        } else {
+                            pagination += '   <nav aria-label="Page navigation example">' +
+                                '<ul class="pagination">' +
+                                '       <li class="page-item">' +
+                                '    <a class="page-link" href="classification.jsp?category=' + category1 + '&currentPage=' + currentPage + 1 + '"' +
+                                '        aria-label="Previous">' +
+                                '         <span aria-hidden="true">&raquo;</span>' +
+                                '         <span class="sr-only"></span>' +
+                                '     </a>' +
+                                '   </li>' +
+                                ' <li class="page-item">' +
+                                '    <a class="page-link" href="classification.jsp?category=' + category1 + '&currentPage=' + totalPage + '">末页</a>' +
+                                '   </li>' +
+                                '  <li class="page-item">' +
+                                '    <p class="page-item">' +
+                                '        <button type="button" class="btn btn-outline-primary">共' + totalPage + '页' +
+                                '                </button>' +
+                                '     </p>' +
+                                '  </li>' +
+                                '</ul>' +
+                                '</nav>';
+                        }
+                        pagination += '</div></div>';
+                        $("#paginationNav").html(pagination);
+                    },
+                    error: function (data, type, err) {
+                        console.log("ajax错误类型：" + type);
+                        console.log(err);
                     }
-                    pagination += '</div></div>';
-                    $("#paginationNav").html(pagination);
-                },
-                error: function (data, type, err) {
-                    console.log("ajax错误类型：" + type);
-                    console.log(err);
-                }
-            }), $.ajax({
+                })
+            }
+
+            $.ajax({
                 url: 'CategoryCountServlet',//请求的后台servlet地址
                 dataType: 'json',//数据格式 
                 type: 'get',//请求方式
@@ -440,14 +624,21 @@
                     }
                 })
         }
-    });
+    )
+    ;
 
     function isLoggedIn() {
         var username = "<%=request.getSession().getAttribute("username") %>";
         if (!isEmpty(username)) {
-            $("#isLoggedIn").html('<li class="nav-item">欢迎你，' + username + '</li>');
+            $("#isLoggedIn").html('<li class="nav-item"><a href="<%=basePath %>/edit.jsp">' + '欢迎你，' + username + '</a></li>');
         }
         ;
+    }
+
+    function searchBlog() {
+        var keyword = $("#blogSearch").val();
+        console.log(keyword);
+        location.href="<%=basePath %>/classification.jsp?keyword=" + keyword;
     }
 </script>
 </body>

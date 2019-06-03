@@ -1,8 +1,7 @@
 package com.unicom.homepage;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.unicom.dao.BlogPaginationDao;
+import com.unicom.pagination.dao.BlogPaginationDao;
 import com.unicom.entity.Blog;
 import com.unicom.util.CommonUtil;
 import com.unicom.util.StaticConstant;
@@ -13,9 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @program: BlogSystem

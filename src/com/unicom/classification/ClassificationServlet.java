@@ -1,7 +1,6 @@
 package com.unicom.classification;
 
 import com.alibaba.fastjson.JSONObject;
-import com.unicom.dao.BlogPaginationDao;
 import com.unicom.entity.Blog;
 import com.unicom.util.CommonUtil;
 import com.unicom.util.StaticConstant;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -37,17 +35,15 @@ public class ClassificationServlet extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("application/json; charset=utf-8");
         String category = new String(req.getParameter("category").getBytes("iso-8859-1"),"utf-8");
-        ClassficationPagination classficationPagination = new ClassficationPagination();
+        ClassificationPagination classficationPagination = new ClassificationPagination();
         Integer currentPage = null;
         if (!CommonUtil.checkParam(req.getParameter(StaticConstant.currentPage))) {
             currentPage = 1;
         } else {
             currentPage = Integer.parseInt(req.getParameter(StaticConstant.currentPage));
         }
-        System.out.println(category);
         List<Blog> list = classficationPagination.getAllData(currentPage, category);
         Integer totalPage = classficationPagination.getTotalPage(category);
-//        request.setAttribute("totalPage", totalPage);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("list",list);
         jsonObject.put("totalPage",totalPage);

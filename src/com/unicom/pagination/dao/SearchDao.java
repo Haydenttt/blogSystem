@@ -28,12 +28,12 @@ public class SearchDao {
     public List<Blog> getAllData(int currentPage,String keyword){
         List<Blog> list = new ArrayList<>();
         try {
-            sql = "select * from blog525.blog where status = 1 and is_deleted = 0 and concat(title,username) like concat('%',"+keyword+",'%')limit ?,?";
-
+            sql = "select * from blog525.blog where status = 1 and is_deleted = 0 and concat(title,username) like concat('%','"+keyword+"','%')limit ?,?";
             conn = DBUtil.getConn();
             pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, (currentPage - 1) * dataPerPage);
+            pstmt.setInt(2, dataPerPage);
             rs = pstmt.executeQuery();
-
             while(rs.next()){
                 Blog blog = new Blog();
                 Integer id = rs.getInt(1);
@@ -53,7 +53,7 @@ public class SearchDao {
                 blog.setViews(views);
                 blog.setNickname(nickname);
                 blog.setUpdateTime(updateTime);
-
+                list.add(blog);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,7 +73,7 @@ public class SearchDao {
     public int getTotalPage(String keyword){
         int pageCount = 0;
         try {
-            sql = "select count(*) from blog525.blog where status = 1 and is_deleted = 0 and concat(title,username) like concat('%',"+keyword+",'%')limit ?,?";
+            sql = "select count(*) from blog525.blog where status = 1 and is_deleted = 0 and concat(title,username) like concat('%','"+keyword+"','%')";
 
             conn = DBUtil.getConn();
             pstmt = conn.prepareStatement(sql);

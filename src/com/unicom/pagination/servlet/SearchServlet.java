@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class SearchServlet extends HttpServlet {
         }
         String keyword = request.getParameter("keyword");
         List<Blog> list = searchDao.getAllData(currentPage,keyword);
+        System.out.println(list.size());
         Integer totalPage = searchDao.getTotalPage(keyword);
         request.setAttribute("list", list);
         request.setAttribute("totalPage", totalPage);
