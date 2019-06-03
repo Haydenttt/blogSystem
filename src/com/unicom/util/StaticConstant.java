@@ -10,6 +10,4 @@ public class StaticConstant {
 //    分页时的每页可显示信息条数
     public static final int DATA_PER_PAGE = 8;
     public static final String currentPage = "currentPage" ;
-
-
 }

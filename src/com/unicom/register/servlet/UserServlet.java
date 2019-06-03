@@ -2,14 +2,11 @@ package com.unicom.register.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import com.unicom.register.dao.UserBizImpl;
 import com.unicom.entity.User;
-//@WebServlet(name = "UserServlet")
+@WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
@@ -30,12 +27,10 @@ public class UserServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("username", username);
         if (bizImpl.query(username,password)) {
-            System.out.println("用户登录成功");
-
-            request.getRequestDispatcher("edit.jsp").forward(request, response);
+//            System.out.println("用户登录成功");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }else {
             response.sendRedirect("error.jsp");
-
         }
 
 
