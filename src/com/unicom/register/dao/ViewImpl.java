@@ -8,6 +8,7 @@ import java.util.List;
 import com.sun.org.apache.regexp.internal.recompile;
 import com.unicom.entity.Blog;
 
+import com.unicom.entity.Follow;
 import com.unicom.util.DBCon;
 
 public class ViewImpl {
@@ -33,6 +34,33 @@ public class ViewImpl {
 		}
 		//String sql="select id from users where follower_id=?;
 		return list;
+	}
+
+	public List<Follow> query6() {
+
+		List<Follow> list = new ArrayList<Follow>();
+		//boolean flag=false;
+		String sql = "select count(blog_id) as a  from follow where is_liked=1 group by blog_id  limit 6";
+		ResultSet rs = con.query(sql);
+
+		try {
+			while (rs.next()) {
+
+				Follow follow = new Follow();
+
+				follow.setId(rs.getInt("a"));
+				list.add(follow);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//String sql="select id from users where follower_id=?;
+		return list;
+
+
+
+
 	}
 
 	public int query4(String username) {
@@ -101,7 +129,7 @@ public class ViewImpl {
 				i=rs.getInt("id");
 			}
 			else {
-				System.out.println("�д�");
+				System.out.println("错误");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

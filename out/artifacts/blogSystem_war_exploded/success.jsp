@@ -1,36 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" import="com.unicom.entity.User,com.unicom.register.dao.ViewImpl" %>
+         pageEncoding="UTF-8"  import="com.unicom.entity.*,com.unicom.entity.*,com.unicom.register.dao.*"%>
 <%
-    String basePath = request.getScheme() + "://" + request.getServerName()
-            + ":" + request.getServerPort() + request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()
+            +":"+request.getServerPort()+"/"+request.getContextPath();
 %>
 <%
-    User user = new User();
+    User user=new User();
 
-    String username = request.getParameter("username");
+    String username=request.getParameter("username");
     //username="liwanru";
-    ViewImpl view = new ViewImpl();
+    ViewImpl view=new ViewImpl();
     // List<Blog> list=view.query(username);
     //Iterator<Blog> it=list.iterator();
 %>
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>博客统计</title>
-    <link rel="icon" href="<%=basePath %>/img/favicon.png" type="image/png">
+    <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
     <!-- Custom CSS -->
-    <link href="css/style1.css" rel='stylesheet' type='text/css'/>
+    <link href="css/style1.css" rel='stylesheet' type='text/css' />
 
     <!-- jQuery -->
 
-    <link rel="stylesheet" href="css/_header.scss" type='text/css'/>
+    <link rel="stylesheet" href="css/_header.scss" type='text/css' />
     <!-- //lined-icons -->
     <!-- chart -->
     <script src="js/echarts.min.js"></script>
@@ -38,32 +37,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--animate-->
 
 
+
     <!--//end-animate-->
     <!----webfonts--->
-    <link href='http://fonts.useso.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic'
-          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
     <!---//webfonts--->
     <!-- Meters graphs -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <!-- Placed js at the end of the document so the pages load faster -->
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<%=basePath %>/css/bootstrap.css">
-    <link rel="stylesheet" href="<%=basePath %>/vendors/linericon/style.css">
-    <link rel="stylesheet" href="<%=basePath %>/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%=basePath %>/vendors/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="<%=basePath %>/vendors/lightbox/simpleLightbox.css">
-    <link rel="stylesheet" href="<%=basePath %>/vendors/nice-select/css/nice-select.css">
-    <link rel="stylesheet" href="<%=basePath %>/vendors/animate-css/animate.css">
-    <link rel="stylesheet" href="<%=basePath %>/vendors/jquery-ui/jquery-ui.css">
-    <!-- main css -->
-    <link rel="stylesheet" href="<%=basePath %>/css/style.css">
-    <link rel="stylesheet" href="<%=basePath %>/css/responsive.css">
-    <!-- 自定义css -->
-    <link rel="stylesheet" href="<%=basePath %>/css/pagination.css">
-    <link rel="stylesheet" href="<%=basePath %>/css/homepage.css">
+
 </head>
 
-<body class="sticky-header left-side-collapsed" onload="initMap()">
+<body class="sticky-header left-side-collapsed"  onload="initMap()">
 <!--================Header Menu Area =================-->
 <header class="header_area">
     <div class="main_menu">
@@ -79,32 +64,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav">
-                        <li class="nav-item active"><a class="nav-link" href="<%=basePath %>/homepage.jsp" style="font-family: 微软雅黑;">首页</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="index.html">首页</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false" style="font-family: 微软雅黑;">分类</a>
+                               aria-haspopup="true" aria-expanded="false">分类</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=政治经济" style="font-family: 微软雅黑;">政治经济</a>
+                                                        href="<%=basePath %>/single-blog.html">分类一</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=科技" style="font-family: 微软雅黑;">科技</a>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类二</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=体育" style="font-family: 微软雅黑;">体育</a>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类三</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=健康" style="font-family: 微软雅黑;">健康</a>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类四</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=旅游" style="font-family: 微软雅黑;">旅游</a>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类五</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类六</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp" style="font-family: 微软雅黑;">统计</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/MineServlet?username=<%=request.getSession().getAttribute("username") %>&category=all" style="font-family: 微软雅黑;">
-                            我的博客</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/follow.jsp" style="font-family: 微软雅黑;">博客收藏</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/statistics.html">统计</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/myblog.html">我的博客</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/subscribe.html">我的关注</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right header_social ml-auto">
                         <li class="nav-item"><a href="<%=basePath %>/login.jsp"></i>退出</a></li>
@@ -115,7 +97,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </nav>
     </div>
 </header>
-<!--================Header Menu Area =================-->
 
 <div style="margin-top: 80px;margin-left: 80px;">
     <div style="height: 260px;  ">
@@ -194,14 +175,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     // alert(111);
     var myChart = echarts.init(document.getElementById('ee'));
     option = {
-        tooltip: {
+        tooltip : {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
         legend: {
-            orient: 'vertical',
-            x: 'left',
-            data: ['政治经济', '科技', '体育', '健康', '旅游']
+            orient : 'vertical',
+            x : 'left',
+            data:['政治经济','科技','体育','健康','旅游']
         },
         toolbox: {
             show : true,
@@ -569,3 +550,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 myChart9.setOption(option9, true);
                 /*  }})  */}})},1000);
 </script>
+	
+     

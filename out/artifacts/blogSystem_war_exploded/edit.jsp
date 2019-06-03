@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" import="com.unicom.entity.*" %>
 <%
- String basePath = request.getScheme()+"://"+request.getServerName()
- +":"+request.getServerPort()+request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()
+            +":"+request.getServerPort()+""+request.getContextPath();
 %>
 <%
     User user=new User();
@@ -25,7 +25,6 @@
     <title>修改</title>
 </head>
 <body style="background: #f3f3f3">
-<!--================Header Menu Area =================-->
 <header class="header_area">
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -40,32 +39,29 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav">
-                        <li class="nav-item active"><a class="nav-link" href="<%=basePath %>/homepage.jsp" style="font-family: 微软雅黑;">首页</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="index.html">首页</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false" style="font-family: 微软雅黑;">分类</a>
+                               aria-haspopup="true" aria-expanded="false">分类</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=政治经济" style="font-family: 微软雅黑;">政治经济</a>
+                                                        href="<%=basePath %>/single-blog.html">分类一</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=科技" style="font-family: 微软雅黑;">科技</a>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类二</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=体育" style="font-family: 微软雅黑;">体育</a>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类三</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=健康" style="font-family: 微软雅黑;">健康</a>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类四</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=旅游" style="font-family: 微软雅黑;">旅游</a>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类五</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类六</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp" style="font-family: 微软雅黑;">统计</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/MineServlet?username=<%=request.getSession().getAttribute("username") %>&category=all" style="font-family: 微软雅黑;">
-                            我的博客</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/follow.jsp" style="font-family: 微软雅黑;">博客收藏</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/statistics.html">统计</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/myblog.html">我的博客</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/subscribe.html">我的关注</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right header_social ml-auto">
 
@@ -78,7 +74,6 @@
         </nav>
     </div>
 </header>
-<!--================Header Menu Area =================-->
 <div class="reg_div" style="background: #A3B4DC">
     <p>修改用户信息</p>
 
