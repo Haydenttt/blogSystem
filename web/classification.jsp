@@ -67,7 +67,7 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp">统计</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/viewMyBlog.jsp">我的博客</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/subscribe.html">我的关注</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/blogList/templates/follow.jsp">我的关注</a></li>
                     </ul>
                     <ul id="isLoggedIn" class="nav navbar-nav navbar-right header_social ml-auto">
                         <li class="nav-item"><a href="<%=basePath %>/login.jsp"></i>登录/注册</a></li>
@@ -225,6 +225,7 @@
         var category = GetQueryString("category");
         var category1= getQueryString("category")
         var currentPage = GetQueryString("currentPage");
+        isLoggedIn();
         if(category !=null && category.toString().length>1)
         {
             $.ajax({
@@ -441,6 +442,13 @@
         }
     });
 
+    function isLoggedIn() {
+        var username = "<%=request.getSession().getAttribute("username") %>";
+        if (!isEmpty(username)) {
+            $("#isLoggedIn").html('<li class="nav-item">欢迎你，' + username + '</li>');
+        }
+        ;
+    }
 </script>
 </body>
 </html>

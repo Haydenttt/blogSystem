@@ -26,9 +26,9 @@ public class JDBCUtils {
             e.printStackTrace();
         }*/
         driverClass = "com.mysql.jdbc.Driver";
-        url = "jdbc:mysql://localhost:3306/blog525";
+        url = "jdbc:mysql://localhost:3306/blog525?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
         username = "root";
-        password = "123456";
+        password = "root";
     }
 
 

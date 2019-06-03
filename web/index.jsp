@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%
     String basePath = request.getScheme() + "://" + request.getServerName()
-            + ":" + request.getServerPort() + "/" + request.getContextPath();
+            + ":" + request.getServerPort() + request.getContextPath();
 %>
 <!doctype html>
 <!doctype html>
@@ -47,7 +47,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav">
-                        <li class="nav-item active"><a class="nav-link" href="index.jsp">首页</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="<%=basePath %>/index.jsp">首页</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">分类</a>
@@ -71,7 +71,7 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp">统计</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/viewMyBlog.jsp">我的博客</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/subscribe.html">我的关注</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/blogList/templates/follow.jsp">我的关注</a></li>
                     </ul>
                         <ul id="isLoggedIn" class="nav navbar-nav navbar-right header_social ml-auto">
                             <li class="nav-item"><a href="<%=basePath %>/login.jsp"></i>登录/注册</a></li>

@@ -1,35 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"  import="com.unicom.entity.User,com.unicom.register.dao.ViewImpl"%>
+         pageEncoding="UTF-8" import="com.unicom.entity.User,com.unicom.register.dao.ViewImpl" %>
 <%
-    String basePath = request.getScheme()+"://"+request.getServerName()
-            +":"+request.getServerPort()+"/"+request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName()
+            + ":" + request.getServerPort() + request.getContextPath();
 %>
 <%
-    User user=new User();
+    User user = new User();
 
-    String username=request.getParameter("username");
+    String username = request.getParameter("username");
     //username="liwanru";
-    ViewImpl view=new ViewImpl();
+    ViewImpl view = new ViewImpl();
     // List<Blog> list=view.query(username);
     //Iterator<Blog> it=list.iterator();
 %>
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Home</title>
+    <title>博客统计</title>
+    <link rel="icon" href="<%=basePath %>/img/favicon.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
     <!-- Custom CSS -->
-    <link href="css/style1.css" rel='stylesheet' type='text/css' />
+    <link href="css/style1.css" rel='stylesheet' type='text/css'/>
 
     <!-- jQuery -->
 
-    <link rel="stylesheet" href="css/_header.scss" type='text/css' />
+    <link rel="stylesheet" href="css/_header.scss" type='text/css'/>
     <!-- //lined-icons -->
     <!-- chart -->
     <script src="js/echarts.min.js"></script>
@@ -37,18 +44,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--animate-->
 
 
-
     <!--//end-animate-->
     <!----webfonts--->
-    <link href='http://fonts.useso.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic'
+          rel='stylesheet' type='text/css'>
     <!---//webfonts--->
     <!-- Meters graphs -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <!-- Placed js at the end of the document so the pages load faster -->
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="<%=basePath %>/css/bootstrap.css">
+    <link rel="stylesheet" href="<%=basePath %>/vendors/linericon/style.css">
+    <link rel="stylesheet" href="<%=basePath %>/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<%=basePath %>/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="<%=basePath %>/vendors/lightbox/simpleLightbox.css">
+    <link rel="stylesheet" href="<%=basePath %>/vendors/nice-select/css/nice-select.css">
+    <link rel="stylesheet" href="<%=basePath %>/vendors/animate-css/animate.css">
+    <link rel="stylesheet" href="<%=basePath %>/vendors/jquery-ui/jquery-ui.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="<%=basePath %>/css/style.css">
+    <link rel="stylesheet" href="<%=basePath %>/css/responsive.css">
+    <!-- 自定义css -->
+    <link rel="stylesheet" href="<%=basePath %>/css/pagination.css">
+    <link rel="stylesheet" href="<%=basePath %>/css/homepage.css">
 </head>
 
-<body class="sticky-header left-side-collapsed"  onload="initMap()">
+<body class="sticky-header left-side-collapsed" onload="initMap()">
 <!--================Header Menu Area =================-->
 <header class="header_area">
     <div class="main_menu">
@@ -88,7 +109,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp">统计</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%=basePath %>/viewMyBlog.jsp">我的博客</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/subscribe.html">我的关注</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/blogList/templates/follow.jsp">我的关注</a>
+                        </li>
                     </ul>
                     <ul id="isLoggedIn" class="nav navbar-nav navbar-right header_social ml-auto">
                         <li class="nav-item"><a href="<%=basePath %>/login.jsp"></i>登录/注册</a></li>
@@ -98,10 +120,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </nav>
     </div>
     <%--<div class="logo_part">--%>
-        <%--<div class="container">--%>
-            <%--<h1 class="logo">欢迎使用第八组的博客</h1>--%>
-            <%--<!-- <a class="logo" href="#"><img src="img/logo.png" alt=""></a> -->--%>
-        <%--</div>--%>
+    <%--<div class="container">--%>
+    <%--<h1 class="logo">欢迎使用第八组的博客</h1>--%>
+    <%--<!-- <a class="logo" href="#"><img src="img/logo.png" alt=""></a> -->--%>
+    <%--</div>--%>
     <%--</div>--%>
 </header>
 <!--================Header Menu Area =================-->
@@ -111,69 +133,116 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div
                 style="float: left; margin-right: 10px; width: 23%; height: 260px; background: #fff">
 
-            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #8BC34A">阅读量</p></div></div>
+            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5">
+                <div style="height:30px;"><p align="center"
+                                             style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #8BC34A">
+                    阅读量</p></div>
+            </div>
             <div style="height: 130px; ">
-                <h1 align="center" style="line-height: 150px"><%=view.query(username)%></h1>
+                <h1 align="center" style="line-height: 150px"><%=view.query(username)%>
+                </h1>
             </div>
         </div>
         <div
                 style="float: left; margin-right: 10px; width: 23%; height: 260px; background: #fff">
 
-            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #00BCD4">点赞量</p></div></div>
+            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5">
+                <div style="height:30px;"><p align="center"
+                                             style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #00BCD4">
+                    点赞量</p></div>
+            </div>
             <div style="height: 130px; ">
-                <h1 align="center" style="line-height: 150px"><%=view.query2(true,username)%></h1>
+                <h1 align="center" style="line-height: 150px"><%=view.query2(true, username)%>
+                </h1>
             </div>
         </div>
         <div
                 style="float: left; margin-right: 10px; width: 23%; height: 260px; background: #fff">
 
-            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div align="center" style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: red">收藏量</p></div></div>
+            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5">
+                <div align="center" style="height:30px;"><p align="center"
+                                                            style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: red">
+                    收藏量</p></div>
+            </div>
             <div style="height: 130px; ">
-                <h1 align="center" style="line-height: 150px"><%=view.query1(false)%></h1>
+                <h1 align="center" style="line-height: 150px"><%=view.query1(false)%>
+                </h1>
             </div>
         </div>
         <div
                 style="float: left; margin-right: 10px; width: 23%; height: 260px; background: #fff">
 
-            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5"><div style="height:30px;"><p align="center" style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #FFCA28">文章数</p></div></div>
+            <div id="a4" style="height: 130px;background:#f9f9f9;border: 1px solid #dae0e5">
+                <div style="height:30px;"><p align="center"
+                                             style="line-height: 30px;color:#fff;float: left; width:100px;margin-left:35%;margin-top: 50px;background: #FFCA28">
+                    文章数</p></div>
+            </div>
             <div style="height: 130px; ">
-                <h1 align="center" style="line-height: 150px"><%=view.query4(username)%></h1>
+                <h1 align="center" style="line-height: 150px"><%=view.query4(username)%>
+                </h1>
             </div>
         </div>
 
     </div>
 
 
-
-            <div style="height: 300px; margin-top: 30px">
-                <div
-                        style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
-                    <div style="height: 50px; background: red">
-                        <p align="center" style="line-height: 50px">分类阅读量</p>
-                    </div>
-                    <div id="dd" style="height: 200px;"></div>
-                </div>
-                <div
-                        style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
-                    <div style="height: 50px; background: #FFCA28">
-                        <p align="center" style="line-height: 50px">阅读量排名前6的文章</p>
-                    </div>
-                    <div id="cc" style="height: 200px;"></div>
-                </div>
-                <div
-                        style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
-                    <div style="height: 50px; background: #00BCD4">
-                        <p align="center" style="line-height: 50px;">文章分类</p>
-                    </div>
-                    <div id="ee" style="height: 200px;"></div>
-                </div>
+    <div style="height: 300px; margin-top: 30px">
+        <div
+                style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
+            <div style="height: 50px; background: red">
+                <p align="center" style="line-height: 50px">分类阅读量</p>
             </div>
+            <div id="dd" style="height: 200px;"></div>
+        </div>
+        <div
+                style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
+            <div style="height: 50px; background: #FFCA28">
+                <p align="center" style="line-height: 50px">阅读量排名前6的文章</p>
+            </div>
+            <div id="cc" style="height: 200px;"></div>
+        </div>
+        <div
+                style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
+            <div style="height: 50px; background: #00BCD4">
+                <p align="center" style="line-height: 50px;">文章分类</p>
+            </div>
+            <div id="ee" style="height: 200px;"></div>
+        </div>
+    </div>
 
 </div>
-            <!--footer section end-->
+<!--footer section end-->
 
-            <!-- main content end-->
-            </div>
+<!-- main content end-->
+</div>
+<script src="<%=basePath %>/js/jquery-3.2.1.min.js"></script>
+<script src="<%=basePath %>/js/popper.js"></script>
+<script src="<%=basePath %>/js/bootstrap.min.js"></script>
+<script src="<%=basePath %>/js/stellar.js"></script>
+<script src="<%=basePath %>/vendors/lightbox/simpleLightbox.min.js"></script>
+<script src="<%=basePath %>/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+<script src="<%=basePath %>/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+<script src="<%=basePath %>/vendors/isotope/isotope-min.js"></script>
+<script src="<%=basePath %>/vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="<%=basePath %>/vendors/jquery-ui/jquery-ui.js"></script>
+<script src="<%=basePath %>/js/jquery.ajaxchimp.min.js"></script>
+<script src="<%=basePath %>/js/mail-script.js"></script>
+<script src="<%=basePath %>/js/theme.js"></script>
+<script src="<%=basePath %>/js/common.js"></script>
+<script>
+    $(document).ready(function () {
+            isLoggedIn()
+        }
+    )
+
+    function isLoggedIn() {
+        var username = "<%=request.getSession().getAttribute("username") %>";
+        if (!isEmpty(username)) {
+            $("#isLoggedIn").html('<li class="nav-item">欢迎你，' + username + '</li>');
+        }
+        ;
+    }
+</script>
 
 </body>
 </html>
@@ -183,20 +252,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     // alert(111);
     var myChart = echarts.init(document.getElementById('ee'));
     option = {
-        tooltip : {
+        tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
         legend: {
-            orient : 'vertical',
-            x : 'left',
-            data:['政治经济','科技','体育','健康','旅游']
+            orient: 'vertical',
+            x: 'left',
+            data: ['政治经济', '科技', '体育', '健康', '旅游']
         },
         toolbox: {
-            show : true,
-            feature : {
+            show: true,
+            feature: {
 
-                magicType : {
+                magicType: {
                     show: true,
                     type: ['pie', 'funnel'],
                     option: {
@@ -208,42 +277,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         }
                     }
                 },
-                restore : {show: true},
-                saveAsImage : {show: true}
+                restore: {show: true},
+                saveAsImage: {show: true}
             }
         },
-        calculable : true,
-        series : [
+        calculable: true,
+        series: [
             {
-                name:'访问来源',
-                type:'pie',
-                radius : ['50%', '70%'],
-                itemStyle : {
-                    normal : {
-                        label : {
-                            show : false
+                name: '访问来源',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: false
                         },
-                        labelLine : {
-                            show : false
+                        labelLine: {
+                            show: false
                         }
                     },
-                    emphasis : {
-                        label : {
-                            show : true,
-                            position : 'center',
-                            textStyle : {
-                                fontSize : '30',
-                                fontWeight : 'bold'
+                    emphasis: {
+                        label: {
+                            show: true,
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '30',
+                                fontWeight: 'bold'
                             }
                         }
                     }
                 },
-                data:[
-                    {value:200, name:'政治经济'},
-                    {value:80, name:'科技'},
-                    {value:300, name:'体育'},
-                    {value:100, name:'健康'},
-                    {value:150, name:'旅游'}
+                data: [
+                    {value: 200, name: '政治经济'},
+                    {value: 80, name: '科技'},
+                    {value: 300, name: '体育'},
+                    {value: 100, name: '健康'},
+                    {value: 150, name: '旅游'}
                 ]
             }
         ]
@@ -257,112 +326,113 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     var myChart8 = echarts.init(document.getElementById('cc'));
     //alert(121);
     option8 = {
-        tooltip : {
+        tooltip: {
             trigger: 'axis',
             formatter:
-                function(params)
-                { return params[0].name+"<br>"+params[1].seriesName+":"+params[1].data+"<br>" +params[0].seriesName+":"+params[0].data+"次" }
+                function (params) {
+                    return params[0].name + "<br>" + params[1].seriesName + ":" + params[1].data + "<br>" + params[0].seriesName + ":" + params[0].data + "次"
+                }
         },
         toolbox: {
-            show : true,
+            show: true,
 
         },
-        calculable : true,
+        calculable: true,
         legend: {
-            x: 'center' ,
+            x: 'center',
 
-            y:  'bottom' ,
-            data:[],
+            y: 'bottom',
+            data: [],
 
         },
-        xAxis : [
+        xAxis: [
             {
-                type : 'category',
-                axisLine:{
-                    lineStyle:{
-                        color:'#4ad2ff',
-                        width:1,//这里是为了突出显示加上的
+                type: 'category',
+                axisLine: {
+                    lineStyle: {
+                        color: '#4ad2ff',
+                        width: 1,//这里是为了突出显示加上的
                     }
-                } ,
-                data :  ['博客1','博客2','博客3','博客4','博客5','博客6'],
-                axisLabel:{
+                },
+                data: ['博客1', '博客2', '博客3', '博客4', '博客5', '博客6'],
+                axisLabel: {
                     interval: 0,
-                    rotate:40
+                    rotate: 40
                 }
             }
         ],
-        yAxis : [
+        yAxis: [
             {
-                type : 'value',
-                name : '次',
+                type: 'value',
+                name: '次',
                 min: 0,
                 max: 150,
                 splitNumber: 7,
-                splitLine:{
-                    show:false
+                splitLine: {
+                    show: false
                 },
-                axisLine:{
-                    lineStyle:{
-                        color:'#4ad2ff',
-                        width:1,//这里是为了突出显示加上的
+                axisLine: {
+                    lineStyle: {
+                        color: '#4ad2ff',
+                        width: 1,//这里是为了突出显示加上的
                     }
-                } ,
-                axisLabel : {
+                },
+                axisLabel: {
                     formatter: '{value} '
                 }
             },
             {
-                type : 'value',
-                name : '',
+                type: 'value',
+                name: '',
                 min: 0,
                 max: 0,
                 splitNumber: 0,
-                splitLine:{
-                    show:false
+                splitLine: {
+                    show: false
                 },
-                axisLine:{
-                    lineStyle:{
-                        color:'#B74AE5',
-                        width:0,//这里是为了突出显示加上的
+                axisLine: {
+                    lineStyle: {
+                        color: '#B74AE5',
+                        width: 0,//这里是为了突出显示加上的
                     }
-                } ,
-                axisLabel : {
+                },
+                axisLabel: {
                     formatter: '{value} '
                 }
             }
         ],
-        series : [
+        series: [
 
             {
-                name:'关注次数',
-                type:'bar',
-                barWidth : 15,
-                itemStyle : {
-                    normal : {
-                        color:'#6959CD',
-                        lineStyle:{
-                            color:'#6959CD'
+                name: '关注次数',
+                type: 'bar',
+                barWidth: 15,
+                itemStyle: {
+                    normal: {
+                        color: '#6959CD',
+                        lineStyle: {
+                            color: '#6959CD'
                         }
                     }
                 },
 
-                data:[23,52,14,71, 27,20]
+                data: [23, 52, 14, 71, 27, 20]
             },
 
             {
-                name:'博客标题',
-                type:'line',
+                name: '博客标题',
+                type: 'line',
 
 
-                itemStyle : {
-                    normal : {
-                        color:'#0AAF9F',
-                        lineStyle:{
-                            color:'#0AAF9F'
+                itemStyle: {
+                    normal: {
+                        color: '#0AAF9F',
+                        lineStyle: {
+                            color: '#0AAF9F'
                         }
                     }
                 },
-                data:[0,0,0,0,0,0]
+                data: [0, 0, 0, 0, 0, 0]
             },
 
         ]
@@ -373,7 +443,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     // 指定图表的配置项和数据
 
-    setInterval(function(){//把option.series[0].data[0].value的值使用random()方法获取一个随机数
+    setInterval(function () {//把option.series[0].data[0].value的值使用random()方法获取一个随机数
         /* 	$.ajax({
                         type : "post",
                         async : false, //同步执行
@@ -383,20 +453,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         success : function(data1) {  */
         //alert(111);
         $.ajax({
-            type : "post",
-            async : false, //同步执行
-            url : "ViewServlet",
-            data : {},
-            dataType : "json", //返回数据形式为json
-            success : function(data1) {
+            type: "post",
+            async: false, //同步执行
+            url: "ViewServlet",
+            data: {},
+            dataType: "json", //返回数据形式为json
+            success: function (data1) {
                 //alert(11);
-                var cc=[]
-                var dd=[1,2,3,4,5,6]
-                $.each(data1, function(index,obj) {
+                var cc = []
+                var dd = [1, 2, 3, 4, 5, 6]
+                $.each(data1, function (index, obj) {
 
-                    if(index<7)	{
-                        cc[index]=data1[index].views
-                        dd[index]=data1[index].title
+                    if (index < 7) {
+                        cc[index] = data1[index].views
+                        dd[index] = data1[index].title
 
                         // alert( dd[index]);
                     }
@@ -404,20 +474,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 /* $.post("/ViewServlet",{},function(data3){  */
 
-                var data2=[{
-                    "car":(Math.random() * 100).toFixed(2) - 0 ,
-                    "cc":(Math.random() * 100).toFixed(2) - 0
+                var data2 = [{
+                    "car": (Math.random() * 100).toFixed(2) - 0,
+                    "cc": (Math.random() * 100).toFixed(2) - 0
                 }]
 
 
                 /* 		 var myChart = echarts.init(document.getElementById('main1'));
                     var neicui=10*((data3.totalMem)/(data3.usedMem)).toFixed(2)  */
 
-                option8.series[0].data =cc;
-                option8.series[1].data =dd;
+                option8.series[0].data = cc;
+                option8.series[1].data = dd;
                 // alert(134)
                 myChart8.setOption(option8, true);
-            }})  }, 1000);
+            }
+        })
+    }, 1000);
 </script>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
@@ -426,94 +498,98 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     var myChart9 = echarts.init(document.getElementById('dd'));
     //alert(121);
     option9 = {
-        tooltip : {
+        tooltip: {
             trigger: 'axis',
-            formatter:function(params){
-                return params[0].name+params[0].seriesName+":"+params[0].data+"人" }
+            formatter: function (params) {
+                return params[0].name + params[0].seriesName + ":" + params[0].data + "人"
+            }
         },
         toolbox: {
-            show : true,
+            show: true,
 
         },
-        calculable : true,
+        calculable: true,
         legend: {
-            x: 'center' ,
+            x: 'center',
 
-            y:  'top' ,
-            data:[{name:'4G用户量',
-                textStyle:{color:"#4ad2ff"}
+            y: 'top',
+            data: [{
+                name: '4G用户量',
+                textStyle: {color: "#4ad2ff"}
             },
 
-                {name:'5G用流量',
-                    textStyle:{color:"#4ad2ff"}
+                {
+                    name: '5G用流量',
+                    textStyle: {color: "#4ad2ff"}
 
                 },
-                {name:'4G用户量',
-                    textStyle:{color:"#4ad2ff"}
+                {
+                    name: '4G用户量',
+                    textStyle: {color: "#4ad2ff"}
                 },
-                {name:'4G用流量',
-                    textStyle:{color:"#4ad2ff"}
+                {
+                    name: '4G用流量',
+                    textStyle: {color: "#4ad2ff"}
 
                 }],
 
 
-
         },
-        xAxis : [
+        xAxis: [
             {
-                type : 'category',
-                axisLine:{
-                    lineStyle:{
-                        color:'#4ad2ff',
-                        width:1,//这里是为了突出显示加上的
+                type: 'category',
+                axisLine: {
+                    lineStyle: {
+                        color: '#4ad2ff',
+                        width: 1,//这里是为了突出显示加上的
                     }
-                } ,
-                data : ['博客1','博客2','博客3','博客4','博客5','博客6'],
-                axisLabel:{
+                },
+                data: ['博客1', '博客2', '博客3', '博客4', '博客5', '博客6'],
+                axisLabel: {
                     interval: 0,
-                    rotate:40
+                    rotate: 40
                 }
             }
         ],
-        yAxis : [
+        yAxis: [
             {
-                type : 'value',
-                name : '次',
+                type: 'value',
+                name: '次',
                 min: 0,
-                max:100,
+                max: 100,
                 splitNumber: 5,
-                splitLine:{
-                    show:false
+                splitLine: {
+                    show: false
                 },
-                axisLine:{
-                    lineStyle:{
-                        color:'#4ad2ff',
-                        width:1,//这里是为了突出显示加上的
+                axisLine: {
+                    lineStyle: {
+                        color: '#4ad2ff',
+                        width: 1,//这里是为了突出显示加上的
                     }
-                } ,
-                axisLabel : {
+                },
+                axisLabel: {
                     formatter: '{value} '
                 }
             },
 
         ],
-        series : [
+        series: [
 
             {
-                name:'',
-                type:'bar',
-                barWidth : 15,
-                itemStyle : {
+                name: '',
+                type: 'bar',
+                barWidth: 15,
+                itemStyle: {
 
-                    normal : {
-                        color:'#4ad2ff',
-                        lineStyle:{
-                            color:'#4ad2ff'
+                    normal: {
+                        color: '#4ad2ff',
+                        lineStyle: {
+                            color: '#4ad2ff'
                         }
                     }
                 },
 
-                data:[101, 90, 36,40,95,59,]
+                data: [101, 90, 36, 40, 95, 59,]
             }
         ]
     };
@@ -523,29 +599,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     // 指定图表的配置项和数据
 
-    setInterval(function(){//把option.series[0].data[0].value的值使用random()方法获取一个随机数
+    setInterval(function () {//把option.series[0].data[0].value的值使用random()方法获取一个随机数
         $.ajax({
-            type : "post",
-            async : false, //同步执行
-            url : "ViewServlet",
-            data : {},
-            dataType : "json", //返回数据形式为json
-            success : function(data1) {
+            type: "post",
+            async: false, //同步执行
+            url: "ViewServlet",
+            data: {},
+            dataType: "json", //返回数据形式为json
+            success: function (data1) {
                 //alert(111);
-                var cc=[101 -Math.floor(Math.random()*1),
-                    90-Math.floor(Math.random()*1),
-                    62-Math.floor(Math.random()*1),
-                    40 -Math.floor(Math.random()*1),
-                    95-Math.floor(Math.random()*1),
+                var cc = [101 - Math.floor(Math.random() * 1),
+                    90 - Math.floor(Math.random() * 1),
+                    62 - Math.floor(Math.random() * 1),
+                    40 - Math.floor(Math.random() * 1),
+                    95 - Math.floor(Math.random() * 1),
 
-                    59-Math.floor(Math.random()*1),
+                    59 - Math.floor(Math.random() * 1),
                     /* 69-Math.floor(Math.random()*1),
 
                     46-Math.floor(Math.random()*1), */];
-                $.each(data1, function(index,obj) {
+                $.each(data1, function (index, obj) {
 
-                    if(index<7)	{
-                        cc[index]=data1[index].views
+                    if (index < 7) {
+                        cc[index] = data1[index].views
                         // alert( cc[index]);
                     }
                 });
@@ -553,20 +629,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <!-- $.post("../getserverinfo",{},function(data3){ -->
 
-                var data2=[{
-                    "car":(Math.random() * 100).toFixed(2) - 0 ,
-                    "cc":(Math.random() * 100).toFixed(2) - 0
+                var data2 = [{
+                    "car": (Math.random() * 100).toFixed(2) - 0,
+                    "cc": (Math.random() * 100).toFixed(2) - 0
                 }]
 
 
                 /* 		 var myChart = echarts.init(document.getElementById('main1'));
                     var neicui=10*((data3.totalMem)/(data3.usedMem)).toFixed(2)  */
 
-                option9.series[0].data =cc;
+                option9.series[0].data = cc;
 
                 // alert(134)
                 myChart9.setOption(option9, true);
-                /*  }})  */}})},60*60*1000);
+                /*  }})  */
+            }
+        })
+    }, 60 * 60 * 1000);
 </script>
 	
      

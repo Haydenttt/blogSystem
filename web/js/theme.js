@@ -32,9 +32,9 @@
 	parallaxEffect();
 	
 	
-	// /*----------------------------------------------------*/
-    // /*  Testimonials Slider
-    // /*----------------------------------------------------*/
+	/*----------------------------------------------------*/
+    /*  Testimonials Slider
+    /*----------------------------------------------------*/
     function text_slider(){
         if ( $('.blog_text_slider').length ){
             $('.blog_text_slider').owlCarousel({
@@ -44,7 +44,7 @@
                 nav: false,
                 autoplay: false,
                 smartSpeed: 1500,
-                dots:false,
+                dots:false, 
 				navContainer: '.blog_text_slider',
                 navText: ['<i class="lnr lnr-arrow-left"></i>','<i class="lnr lnr-arrow-right"></i>'],
             })
