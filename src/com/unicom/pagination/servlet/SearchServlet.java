@@ -2,6 +2,8 @@ package com.unicom.pagination.servlet;
 
 import com.alibaba.fastjson.JSONObject;
 import com.unicom.entity.Blog;
+import com.unicom.exception.BlogException;
+import com.unicom.exception.EmBlogError;
 import com.unicom.util.CommonUtil;
 import com.unicom.util.StaticConstant;
 import com.unicom.pagination.dao.*;
@@ -22,11 +24,17 @@ public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SearchDao searchDao = new SearchDao();
         Integer currentPage = null;
+
         if (!CommonUtil.checkParam(request.getParameter(StaticConstant.currentPage))) {
             currentPage = 1;
         } else {
             currentPage = Integer.parseInt(request.getParameter(StaticConstant.currentPage));
         }
+
+        if (!CommonUtil.checkParam(request.getParameter("keyword"))){
+      throw new BlogException(EmBlogError.PARAMETER_VALIDATION_ERROR.setErrMsg("request.getParameter('keyword') FAILED!"));
+        }
+
         String keyword = request.getParameter("keyword");
         List<Blog> list = searchDao.getAllData(currentPage,keyword);
         System.out.println(list.size());

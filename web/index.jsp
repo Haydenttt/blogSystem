@@ -47,34 +47,35 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav">
-                        <li class="nav-item active"><a class="nav-link" href="<%=basePath %>/index.jsp">首页</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="<%=basePath %>/homepage.jsp" style="font-family: 微软雅黑;">首页</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">分类</a>
+                               aria-haspopup="true" aria-expanded="false" style="font-family: 微软雅黑;">分类</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=政治经济">政治经济</a>
+                                                        href="<%=basePath %>/classification.jsp?category=政治经济" style="font-family: 微软雅黑;">政治经济</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=科技">科技</a>
+                                                        href="<%=basePath %>/classification.jsp?category=科技" style="font-family: 微软雅黑;">科技</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=体育">体育</a>
+                                                        href="<%=basePath %>/classification.jsp?category=体育" style="font-family: 微软雅黑;">体育</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=健康">健康</a>
+                                                        href="<%=basePath %>/classification.jsp?category=健康" style="font-family: 微软雅黑;">健康</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=旅游">旅游</a>
+                                                        href="<%=basePath %>/classification.jsp?category=旅游" style="font-family: 微软雅黑;">旅游</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp">统计</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/viewMyBlog.jsp">我的博客</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/follow.jsp">我的关注</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp" style="font-family: 微软雅黑;">统计</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/MineServlet?username=<%=request.getSession().getAttribute("username") %>&category=all" style="font-family: 微软雅黑;">
+                            我的博客</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/follow.jsp" style="font-family: 微软雅黑;">博客收藏</a></li>
                     </ul>
                         <ul id="isLoggedIn" class="nav navbar-nav navbar-right header_social ml-auto">
-                            <li class="nav-item"><a href="<%=basePath %>/login.jsp"></i>登录/注册</a></li>
+                            <li class="nav-item"><a href="<%=basePath %>/login.jsp" style="font-family: 微软雅黑;"></i>登录/注册</a></li>
                         </ul>
                 </div>
             </div>
@@ -147,7 +148,7 @@
             </div>
         </div>
     </div>
-    </div>
+    <%--</div>--%>
 </section>
 <!--================End Home Banner Area =================-->
 
@@ -493,12 +494,10 @@
         </div>
         <div class="row footer-bottom d-flex justify-content-between align-items-center">
             <p class="col-lg-12 footer-text text-center">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 Copyright &copy;
                 <script>document.write(new Date().getFullYear());</script>
-                All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by
-                <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                All rights reserved | Blog System Made By <strong>Group 8</strong>
+                <a target="_blank" style="color: coral;"><br/> 李婉茹 | 刘沛 | 黄小明 | 李帅 | 时尚 | 唐隆基 | 刘杰</a>
             </p>
         </div>
     </div>
@@ -557,7 +556,7 @@
                 for (var i = 0; i < list.length; i++) {    //遍历data数组
                     var blog = list[i];
                     var blogImg = isEmpty(blog.coverImageUrl) ? defaultBlogImg : blog.coverImageUrl;
-                    blogDivList += " <div class='row'><articl blog-id='" + blog.id + "' class='blog_style1'> " +
+                    blogDivList += " <div class='row'><article blog-id='" + blog.id + "' class='blog_style1'> " +
                         "<div class='blog_img'> " +
                         "	<img class='img-fluid img-fill blog-img-init' src='" + blogImg + "' alt=''>" +
                         "</div>" +
@@ -605,8 +604,8 @@
                         '    </li>' +
                         //其他页，点击到上一页
                         '   <li class="page-item">' +
-                        '     <a class="page-link" href="index.jsp?currentPage=' + (totalPage - 1) + '"' +
-                        '       aria-label="Previous">' +
+                        '     <a class="page-link" href=' + (totalPage - 1) + '' +
+                        '"index.jsp?currentPage="       aria-label="Previous">' +
                         '       <span aria-hidden="true">&laquo;</span>' +
                         '       <span class="sr-only"></span>' +
                         '     </a>' +
@@ -646,7 +645,7 @@
                         pagination += ' <nav aria-label="Page navigation example">' +
                             '<ul class="pagination">' +
                             '<li class="page-item">' +
-                            ' <a class="page-link" href="index.jsp?currentPage=' + i + '">' + i + '</a>' +
+                            ' <a class="page-link" href=' + i + '"index.jsp?currentPage=">' + i + '</a>' +
                             '  </li>' +
                             '  </ul>' +
                             '</nav>';
@@ -679,14 +678,14 @@
                     pagination += '   <nav aria-label="Page navigation example">' +
                         '<ul class="pagination">' +
                         '       <li class="page-item">' +
-                        '    <a class="page-link" href="index.jsp?currentPage=' + currentPage + 1 + '"' +
-                        '        aria-label="Previous">' +
+                        '    <a class="page-link" href=' + currentPage + 1 + '' +
+                        '"index.jsp?currentPage="        aria-label="Previous">' +
                         '         <span aria-hidden="true">&raquo;</span>' +
                         '         <span class="sr-only"></span>' +
                         '     </a>' +
                         '   </li>' +
                         ' <li class="page-item">' +
-                        '    <a class="page-link" href="index.jsp?currentPage=' + totalPage + '">末页</a>' +
+                        '    <a class="page-link" href=' + totalPage + '"index.jsp?currentPage=">末页</a>' +
                         '   </li>' +
                         '  <li class="page-item">' +
                         '    <p class="page-item">' +
@@ -804,6 +803,7 @@
             type: 'get',//
             async: false,//是否异步请求
             success: function (data) {   //如果请求成功，返回数据。
+                console.log(data);
                 var topRankBlogList = '<div class="blog_text_slider owl-carousel">';
                 for (var i = 0; i < data.length; i++) {
                     var blog = data[i];

@@ -104,11 +104,9 @@
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
                         <div class="input-group">
-                            <input id="blogSearch" type="text" class="form-control"
-                                                        placeholder="搜索博文">
+                            <input type="text" class="form-control" placeholder="搜索博文">
                             <span class="input-group-btn">
-                                    <button id="blogSearchBtn" class="btn btn-default btn-primary"
-                                            onclick="searchBlog();"><i
+                                    <button class="btn btn-default" type="button"><i
                                             class="lnr lnr-magnifier"></i></button>
                                 </span>
                         </div><!-- /input-group -->
@@ -229,8 +227,6 @@
     $(document).ready(function () {
             var defaultBlogImg = "<%=basePath %>/img/home-blog/blog-4.jpg";//设置默认博客图片，当博客没有图片时置为默认图
             var defaultTopBlogImg = "<%=basePath %>/img/blog/popular-post/post1.jpg";//设置默认热门博文图片，当博客没有图片时置为默认图
-            var category = GetQueryString("category");
-            var category1 = getQueryString("category");
             var keyword = GetQueryString("keyword");
             var keyword1 = getQueryString("keyword")
             var currentPage = GetQueryString("currentPage");
@@ -241,7 +237,6 @@
                 blogListUrl = 'search';
                 data = {
                     keyword: keyword,
-                    currentPage: currentPage
                 };
                 $.ajax({
                     url: blogListUrl,//请求的后台servlet地址
@@ -630,15 +625,9 @@
     function isLoggedIn() {
         var username = "<%=request.getSession().getAttribute("username") %>";
         if (!isEmpty(username)) {
-            $("#isLoggedIn").html('<li class="nav-item"><a href="<%=basePath %>/edit.jsp">' + '欢迎你，' + username + '</a></li>');
+            $("#isLoggedIn").html('<li class="nav-item"><a href="<%=basePath %>/edit.jsp">'+'欢迎你，' + username + '</a></li>');
         }
         ;
-    }
-
-    function searchBlog() {
-        var keyword = $("#blogSearch").val();
-        console.log(keyword);
-        location.href="<%=basePath %>/classification.jsp?keyword=" + keyword;
     }
 </script>
 </body>

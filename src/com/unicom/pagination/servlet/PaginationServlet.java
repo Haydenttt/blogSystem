@@ -32,7 +32,7 @@ public class PaginationServlet extends HttpServlet {
     BlogPaginationDao blogPaginationDao = new BlogPaginationDao();
     Integer currentPage = null;
     if (!CommonUtil.checkParam(request.getParameter(StaticConstant.currentPage))) {
-      currentPage = 1;
+        currentPage = 1;
     } else {
       currentPage = Integer.parseInt(request.getParameter(StaticConstant.currentPage));
     }
