@@ -30,3 +30,6 @@
 
 /out/
 /target/
+
+*.xml
+DBUtil.java

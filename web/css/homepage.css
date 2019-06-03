@@ -1,0 +1,16 @@
+/*设置图片自动拉伸*/
+.img-fill {
+    object-fit: fill;
+}
+
+/*设置博客列表图片默认尺寸*/
+.blog-img-init {
+    width: 770px;
+    height: 340px;
+}
+
+/*设置右边栏热门博文图片默认尺寸*/
+.top-blog-img-init{
+    width: 100px;
+    height: 60px;
+}

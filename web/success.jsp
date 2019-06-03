@@ -16,7 +16,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Home</title>
+    <title>博客统计</title>
+    <link rel="icon" href="<%=basePath %>/img/favicon.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -64,29 +65,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav">
-                        <li class="nav-item active"><a class="nav-link" href="index.html">首页</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="index.jsp">首页</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">分类</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/single-blog.html">分类一</a>
+                                                        href="<%=basePath %>/classification.jsp?category=政治经济">政治经济</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类二</a>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="<%=basePath %>/classification.jsp?category=科技">科技</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类三</a>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="<%=basePath %>/classification.jsp?category=体育">体育</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类四</a>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="<%=basePath %>/classification.jsp?category=健康">健康</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类五</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="<%=basePath %>/elements.html">分类六</a>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="<%=basePath %>/classification.jsp?category=旅游">旅游</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/statistics.html">统计</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/myblog.html">我的博客</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/subscribe.html">我的关注</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp">统计</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/viewMyBlog.jsp">我的博客</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/blogList/templates/follow.jsp">我的关注</a>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right header_social ml-auto">
                         <li class="nav-item"><a href="<%=basePath %>/login.jsp"></i>退出</a></li>
@@ -97,6 +101,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </nav>
     </div>
 </header>
+<!--================Header Menu Area =================-->
 
 <div style="margin-top: 80px;margin-left: 80px;">
     <div style="height: 260px;  ">
