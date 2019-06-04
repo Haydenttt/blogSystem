@@ -18,9 +18,9 @@ public class ViewDB {
 //    private static final String root="root";
 //    private static final String password ="123456";
     //关注
-    public String accountIsLikes(int islike){
+    public String accountIsLikes(int blogId){
         System.out.println("db coming");
-        String likesql ="select sum(blog_id) as a from follow where is_liked=2 and blog_id="+islike;
+        String likesql ="select count(blog_id) as a from follow where is_liked=2 and blog_id="+blogId;
         Connection cn =null;
         Statement statement=null;
         ResultSet rs =null;
@@ -154,7 +154,7 @@ public Blog blogValue(int  blogId){
             //3.1创建执行sql语句的对象，并且执行sql语句
             statement = cn.createStatement();
             //3.2 执行sql语句
-            String sql1 ="select * from blog ="+blogId;
+            String sql1 ="select * from blog where id="+blogId;
             resultSet = statement.executeQuery(sql1);
             while (resultSet.next()){
                 BlogView bv = new BlogView();
@@ -286,7 +286,7 @@ public Blog blogValue(int  blogId){
         try {
             cn = DBUtil.getConn();
            // String addLikeSql = "insert into comments values(null,followerName,followedName,blogId,2,0,now(),now())";
-            String addLikeSql = "insert into follow values(null,?,?,?,?,?,now(),now())";
+            String addLikeSql = "insert into blog525.follow (follower_name, followed_name, blog_id, is_liked, is_cancelled) values(?,?,?,?,?)";
             preparedStatement = cn.prepareStatement(addLikeSql);
             preparedStatement.setString(1,followerName);
             preparedStatement.setString(2,followedName);

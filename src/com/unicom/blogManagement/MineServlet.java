@@ -53,9 +53,5 @@ public class MineServlet extends HttpServlet {
                 request.setAttribute("title", category);
             }
             request.getRequestDispatcher("/myBlog.jsp").forward(request, response);
-         {
-            response.sendRedirect(request.getContextPath() + "/login.jsp");
-      System.out.println(request.getContextPath() + "/login.jsp");
-        }
     }
 }

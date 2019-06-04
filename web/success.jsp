@@ -79,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav">
-                        <li class="nav-item active"><a class="nav-link" href="<%=basePath %>/homepage.jsp" style="font-family: 微软雅黑;">首页</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="<%=basePath %>/index.jsp" style="font-family: 微软雅黑;">首页</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false" style="font-family: 微软雅黑;">分类</a>
@@ -160,31 +160,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div
                         style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
                     <div style="height: 50px; background: red">
-                        <p align="center" style="line-height: 50px">点赞量前6</p>
+                        <p align="center" style="line-height: 50px; color: white; font-family: 微软雅黑">点赞量前6</p>
                     </div>
                     <div id="dd" style="height: 200px;"></div>
                 </div>
                 <div
                         style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
                     <div style="height: 50px; background: #FFCA28">
-                        <p align="center" style="line-height: 50px">阅读量排名前6的文章</p>
+                        <p align="center" style="line-height: 50px; color: white; font-family: 微软雅黑">阅读量排名前6的文章</p>
                     </div>
                     <div id="cc" style="height: 200px;"></div>
                 </div>
                 <div
                         style="float: left; margin-right: 30px; width: 30%; height: 300px; background: #fff">
                     <div style="height: 50px; background: #00BCD4">
-                        <p align="center" style="line-height: 50px;">文章分类</p>
+                        <p align="center" style="line-height: 50px; color: white; font-family: 微软雅黑">文章分类</p>
                     </div>
                     <div id="ee" style="height: 200px;"></div>
                 </div>
             </div>
-
 </div>
             <!--footer section end-->
 
             <!-- main content end-->
-            </div>
+            <%--</div>--%>
 
 </body>
 </html>

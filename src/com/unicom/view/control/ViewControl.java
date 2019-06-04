@@ -92,21 +92,18 @@ public class ViewControl extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String bg = req.getParameter("blogId");
+        String blogId = req.getParameter("blogId");
         String count = req.getParameter("count");
         System.out.println("点击后count:"+count);
-
-        int nulike = Integer.valueOf(bg);
-        Blog b1 = vdb.blogValue(nulike);
+        int id = Integer.valueOf(blogId);
+        Blog b1 = vdb.blogValue(id);
         String followedName = b1.getUsername();
         String username= (String)req.getSession().getAttribute("username");
         //添加关注量
-        vdb.addIsLikes(nulike,username,followedName);
-        System.out.println(nulike);
-
+        vdb.addIsLikes(id,username,followedName);
+        System.out.println(id);
         //关注量统计
-        String templike = vdb.accountIsLikes(nulike);
-      //  System.out.println("-----------templike:"+templike);
+        String templike = vdb.accountIsLikes(id);
         //传到前端
         resp.getWriter().print(templike);
     }

@@ -45,7 +45,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav">
-                        <li class="nav-item active"><a class="nav-link" href="<%=basePath %>/homepage.jsp" style="font-family: 微软雅黑;">首页</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="<%=basePath %>/index.jsp" style="font-family: 微软雅黑;">首页</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false" style="font-family: 微软雅黑;">分类</a>
@@ -249,7 +249,7 @@
     $(document).ready(function () {
             isLoggedIn()
         }
-    )
+    );
 
     function isLoggedIn() {
         var username = "<%=request.getSession().getAttribute("username") %>";

@@ -47,35 +47,46 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav">
-                        <li class="nav-item active"><a class="nav-link" href="index.jsp">首页</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="<%=basePath %>/index.jsp"
+                                                       style="font-family: 微软雅黑;">首页</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">分类</a>
+                               aria-haspopup="true" aria-expanded="false" style="font-family: 微软雅黑;">分类</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=政治经济">政治经济</a>
+                                                        href="<%=basePath %>/classification.jsp?category=政治经济"
+                                                        style="font-family: 微软雅黑;">政治经济</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=科技">科技</a>
+                                                        href="<%=basePath %>/classification.jsp?category=科技"
+                                                        style="font-family: 微软雅黑;">科技</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=体育">体育</a>
+                                                        href="<%=basePath %>/classification.jsp?category=体育"
+                                                        style="font-family: 微软雅黑;">体育</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=健康">健康</a>
+                                                        href="<%=basePath %>/classification.jsp?category=健康"
+                                                        style="font-family: 微软雅黑;">健康</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="<%=basePath %>/classification.jsp?category=旅游">旅游</a>
+                                                        href="<%=basePath %>/classification.jsp?category=旅游"
+                                                        style="font-family: 微软雅黑;">旅游</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp">统计</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/viewMyBlog.jsp">我的博客</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/blogList/templates/follow.jsp">我的关注</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/success.jsp"
+                                                style="font-family: 微软雅黑;">统计</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                                href="<%=basePath %>/MineServlet?username=<%=request.getSession().getAttribute("username") %>&category=all"
+                                                style="font-family: 微软雅黑;">
+                            我的博客</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%=basePath %>/follow.jsp"
+                                                style="font-family: 微软雅黑;">博客收藏</a></li>
                     </ul>
                     <ul id="isLoggedIn" class="nav navbar-nav navbar-right header_social ml-auto">
-                        <li class="nav-item"><a href="<%=basePath %>/login.jsp">登录/注册</a></li>
+                        <li class="nav-item"><a href="<%=basePath %>/login.jsp" style="font-family: 微软雅黑;"></i>登录/注册</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -104,9 +115,10 @@
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="搜索博文">
+                            <input id="blogSearch" type="text" class="form-control" placeholder="搜索博文">
                             <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i
+                                    <button id="blogSearchBtn" class="btn btn-default btn-primary"
+                                            onclick="searchBlog();"><i
                                             class="lnr lnr-magnifier"></i></button>
                                 </span>
                         </div><!-- /input-group -->
@@ -147,16 +159,16 @@
                     <h6 class="footer_title">Newsletter</h6>
                     <p>Stay updated with our latest trends</p>
                     <div id="mc_embed_signup">
-                        <form target="_blank"
-                              action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                              method="get" class="subscribe_form relative">
-                            <div class="input-group d-flex flex-row">
-                                <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''"
-                                       onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>
-                            </div>
-                            <div class="mt-10 info"></div>
-                        </form>
+                        <%--<form target="_blank"--%>
+                        <%--action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"--%>
+                        <%--method="get" class="subscribe_form relative">--%>
+                        <%--<div class="input-group d-flex flex-row">--%>
+                        <%--<input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''"--%>
+                        <%--onblur="this.placeholder = 'Email Address '" required="" type="email">--%>
+                        <%--<button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>--%>
+                        <%--</div>--%>
+                        <%--<div class="mt-10 info"></div>--%>
+                        <%--</form>--%>
                     </div>
                 </div>
             </div>
@@ -190,16 +202,15 @@
         </div>
         <div class="row footer-bottom d-flex justify-content-between align-items-center">
             <p class="col-lg-12 footer-text text-center">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 Copyright &copy;
                 <script>document.write(new Date().getFullYear());</script>
-                All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by
-                <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                All rights reserved | Blog System Made By <strong>Group 8</strong>
+                <a target="_blank" style="color: coral;"><br/> 李婉茹 | 刘沛 | 黄小明 | 李帅 | 时尚 | 唐隆基 | 刘杰</a>
             </p>
         </div>
     </div>
 </footer>
+<!--================ End footer Area  =================-->
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="<%=basePath %>/js/jquery-3.2.1.min.js"></script>
@@ -228,8 +239,12 @@
             var defaultBlogImg = "<%=basePath %>/img/home-blog/blog-4.jpg";//设置默认博客图片，当博客没有图片时置为默认图
             var defaultTopBlogImg = "<%=basePath %>/img/blog/popular-post/post1.jpg";//设置默认热门博文图片，当博客没有图片时置为默认图
             var keyword = GetQueryString("keyword");
-            var keyword1 = getQueryString("keyword")
-            var currentPage = GetQueryString("currentPage");
+            var keyword1 = getQueryString("keyword");
+            var category = GetQueryString("category");
+            var category1 = getQueryString("category1");
+        var currentPage = isEmpty(getQueryString("currentPage")) ? 1 : Number(getQueryString("currentPage"));
+            var previous = parseInt(currentPage) - 1;
+            var next = parseInt(currentPage) + 1;
             var blogListUrl = '';
             var data = '';
             isLoggedIn();
@@ -261,11 +276,11 @@
                                 "	<div class='cat'>" +
                                 "<a class='cat_btn' href='#'>收藏</a>" +
                                 "<a href='#'><i class='fa fa-calendar' aria-hidden='true'></i>" + blog.updateTime + "</a>" +
-                                "<a href='#'><i class='fa fa-comments-o' aria-hidden='true'></i>" + blog.views + "</a>" +
+                                "<a href='#'><i class='fa fa-eye' aria-hidden='true'></i>" + blog.views + "</a>" +
                                 "</div>" +
-                                "<a href='#'><h4>" + blog.title + "</h4></a>" +
+                                "<a href='" + "indexComment?id=" + blog.id + "'><h4>" + blog.title + "</h4></a>" +
                                 "<p>" + blog.content.substr(0, 200) + "...</p>" +
-                                "<a class='blog_btn' href='#'>查看更多</a>" +
+                                "<a class='blog_btn' href='" + "indexComment?id=" + blog.id + "'>查看更多</a>" +
                                 "</div>" +
                                 "</div>" +
                                 "</article></div>";
@@ -300,7 +315,7 @@
                                 '    </li>' +
                                 //其他页，点击到上一页
                                 '   <li class="page-item">' +
-                                '     <a class="page-link" href="classification.jsp?keyword=' + keyword1 + '&currentPage=' + (totalPage - 1) + '"' +
+                                '     <a class="page-link" href="classification.jsp?keyword=' + keyword1 + '&currentPage=' + previous + '"' +
                                 '       aria-label="Previous">' +
                                 '       <span aria-hidden="true">&laquo;</span>' +
                                 '       <span class="sr-only"></span>' +
@@ -374,7 +389,7 @@
                             pagination += '   <nav aria-label="Page navigation example">' +
                                 '<ul class="pagination">' +
                                 '       <li class="page-item">' +
-                                '    <a class="page-link" href="classification.jsp?keyword=' + keyword1 + '&currentPage=' + currentPage + 1 + '"' +
+                                '    <a class="page-link" href="classification.jsp?keyword=' + keyword1 + '&currentPage=' + next + '"' +
                                 '        aria-label="Previous">' +
                                 '         <span aria-hidden="true">&raquo;</span>' +
                                 '         <span class="sr-only"></span>' +
@@ -430,9 +445,9 @@
                                 "<a href='#'><i class='fa fa-calendar' aria-hidden='true'></i>" + blog.updateTime + "</a>" +
                                 "<a href='#'><i class='fa fa-comments-o' aria-hidden='true'></i>" + blog.views + "</a>" +
                                 "</div>" +
-                                "<a href='#'><h4>" + blog.title + "</h4></a>" +
+                                "<a href='indexComment?id=" + blog.id + "'><h4>" + blog.title + "</h4></a>" +
                                 "<p>" + blog.content.substr(0, 200) + "...</p>" +
-                                "<a class='blog_btn' href='#'>查看更多</a>" +
+                                "<a class='blog_btn' href='indexComment?id=" + blog.id + "'>查看更多</a>" +
                                 "</div>" +
                                 "</div>" +
                                 "</article></div>";
@@ -604,7 +619,7 @@
                             topBlogList += "<div top-blog-id='" + data[i].blog.id + "'class='media post_item'>" +
                                 "<img class='img-fill top-blog-img-init' src='<%=basePath %>/img/blog/popular-post/post1.jpg' alt='post'>" +
                                 "<div class='media-body'>" +
-                                "<a href='<%=basePath %>/blog-details.html'>" +
+                                "<a href='<%=basePath %>/indexComment?id=" + data[i].blog.id + "'>" +
                                 "<h3>" + data[i].blog.title + "</h3>" +
                                 "</a>" +
                                 "<p>" + data[i].time + "</p>" +
@@ -625,9 +640,15 @@
     function isLoggedIn() {
         var username = "<%=request.getSession().getAttribute("username") %>";
         if (!isEmpty(username)) {
-            $("#isLoggedIn").html('<li class="nav-item"><a href="<%=basePath %>/edit.jsp">'+'欢迎你，' + username + '</a></li>');
+            $("#isLoggedIn").html('<li class="nav-item"><a href="<%=basePath %>/edit.jsp">' + '欢迎你，' + username + '</a></li>');
         }
         ;
+    }
+
+    function searchBlog() {
+        var keyword = $("#blogSearch").val();
+        console.log(keyword);
+        location.href = "<%=basePath %>/classification.jsp?keyword=" + keyword;
     }
 </script>
 </body>
