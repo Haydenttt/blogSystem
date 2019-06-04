@@ -28,8 +28,8 @@
 *.tar.gz
 *.rar
 
-/out/
-/target/
+out/
+target/
 
 *.xml
 DBUtil.java
